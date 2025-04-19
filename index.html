@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nilobyte — Sleek Web Design, Email Templates & Automation</title>
+  <meta name="description" content="Nilobyte: Modern, responsive websites; custom email templates; and workflow automations for creators, startups & small brands.">
+
+  <!-- Open Graph & Structured Data (same as before) -->
+
+  <!-- Tailwind with Dark Mode -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter var', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Poppins', 'system-ui', '-apple-system', 'sans-serif']
+          },
+          animation: {
+            'gradient-x': 'gradient-x 8s ease infinite',
+          },
+          keyframes: {
+            'gradient-x': {
+              '0%, 100%': {'background-position': '0% 50%'},
+              '50%': {'background-position': '100% 50%'},
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- AOS & Icons -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark:bg-gray-900 dark:text-gray-100 bg-gray-50 text-gray-900 transition-colors duration-300">
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-3 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-lg hover:scale-105 transition-transform">
+    <svg class="w-6 h-6 dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+    <svg class="w-6 h-6 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+  </button>
+
+  <!-- Hero Section -->
+  <header class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 dark:from-gray-800 dark:via-gray-900 dark:to-gray-900 text-white px-4 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;utf8,<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' opacity='0.1'><rect width='100' height='100' fill='none'/><path d='M28 28h44v44h-44z' stroke='white' stroke-width='2'/></svg>')"></div>
+    
+    <div class="relative z-10 text-center" data-aos="zoom-in">
+      <img src="./assets/logo.webp" alt="Nilobyte Logo" class="w-32 h-32 mb-8 mx-auto hover:rotate-12 transition-transform">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 font-display bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400">
+        Nilobyte
+      </h1>
+      <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed dark:text-gray-300">
+        Modern web design, email templates & workflow automations that help brands grow with clarity and speed.
+      </p>
+      <a href="#services" class="inline-block px-8 py-4 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-xl">
+        Explore Services
+      </a>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <section id="services" class="py-24 container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-up">
+      <h2 class="text-4xl font-bold font-display mb-6">Crafting Digital Excellence</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400">Web solutions that combine aesthetic perfection with technical precision</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Web Design Card -->
+      <div class="group relative bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300" data-aos="fade-up">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity"></div>
+        <div class="w-16 h-16 mb-6 flex items-center justify-center bg-blue-100 dark:bg-blue-900/30 rounded-2xl">
+          <i class="fas fa-code text-3xl text-blue-600 dark:text-blue-400"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Web Design</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Responsive, mobile-first websites built with HTML, CSS & modern frameworks like Tailwind or Bootstrap.</p>
+        <a href="#" class="inline-flex items-center font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
+          View Projects
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- Email Templates Card -->
+      <div class="group relative bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity"></div>
+        <div class="w-16 h-16 mb-6 flex items-center justify-center bg-purple-100 dark:bg-purple-900/30 rounded-2xl">
+          <i class="fas fa-envelope-open-text text-3xl text-purple-600 dark:text-purple-400"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Email Templates</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Custom cross-client compatible HTML emails with dynamic content integration to boost your engagement.</p>
+        <a href="#" class="inline-flex items-center font-medium text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors">
+          See Templates
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- Automation Card -->
+      <div class="group relative bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-cyan-600 opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity"></div>
+        <div class="w-16 h-16 mb-6 flex items-center justify-center bg-green-100 dark:bg-green-900/30 rounded-2xl">
+          <i class="fas fa-robot text-3xl text-green-600 dark:text-green-400"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Workflow Automations</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Python & API-powered scripts to handle repetitive tasks and streamline your business flow.</p>
+        <a href="#" class="inline-flex items-center font-medium text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors">
+          Automate Now
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+    <!-- Why Choose Nilobyte -->
+    <section class="py-24 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-4 md:flex md:items-center gap-12">
+        <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
+          <h2 class="text-4xl font-bold font-display mb-8">Why Choose Nilobyte?</h2>
+          <ul class="space-y-6 text-lg">
+            <li class="flex items-start">
+              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-code text-blue-600 dark:text-blue-400"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-2">Clean Code & Precision Design</h3>
+                <p class="text-gray-600 dark:text-gray-400">Maintainable codebase with pixel-perfect implementation</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-rocket text-purple-600 dark:text-purple-400"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-2">Blazing Fast Performance</h3>
+                <p class="text-gray-600 dark:text-gray-400">SEO-optimized architecture with sub-second load times</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-infinity text-green-600 dark:text-green-400"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-2">Unlimited Revisions</h3>
+                <p class="text-gray-600 dark:text-gray-400">Premium packages include endless refinement cycles</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="w-8 h-8 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-globe text-orange-600 dark:text-orange-400"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-2">Global Communication</h3>
+                <p class="text-gray-600 dark:text-gray-400">Fluent in English, German, French & Spanish</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left">
+          <img src="./assets/workflowillustration.webp"
+          alt="Workflow automation process showing data input transformed into email campaigns through Python automation"
+          width="800"
+          height="600"
+          loading="lazy"
+          class="rounded-2xl border-4 border-white dark:border-gray-800 shadow-lg hover:shadow-xl transition-shadow"
+          data-aos="fade-up"
+          srcset="C:\Users\Illua\OneDrive\Email attachments\Documents\Business\Webpage\workflowillustration.webp"
+          sizes="(max-width: 768px) 100vw, 50vw">
+        </div>
+      </div>
+    </section>
+
+   <!-- Contact Footer -->
+   <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 py-16">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold font-display mb-6" data-aos="fade-up">Let's Build Something Amazing</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="100">
+          Have a project in mind? Let's make it reality
+        </p>
+        <a href="mailto:hello.nilobyte@gmail.com" 
+           class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-2xl font-semibold hover:bg-indigo-700 transition-colors shadow-lg"
+           data-aos="zoom-in">
+          hello.nilobyte@gmail.com
+        </a>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+          <img src="./assets/logo.webp" alt="Logo" class="h-12 w-12 mb-4 mx-auto md:mx-0">
+          <p class="text-gray-600 dark:text-gray-400">Digital Solutions Architect</p>
+        </div>
+        
+        <div class="flex space-x-6 mb-8 md:mb-0" data-aos="fade-up" data-aos-delay="100">
+          <a href="https://twitter.com/nilobytehq" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl transition-shadow">
+            <i class="fab fa-twitter text-blue-400"></i>
+          </a>
+          <a href="https://instagram.com/nilobytehq" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-instagram text-pink-500"></i>
+          </a>
+          <a href="https://youtube.com/@nilobyte" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-youtube text-red-600"></i>
+          </a>
+          <a href="https://tiktok.com/@nilobyte" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-tiktok text-gray-900 dark:text-gray-100"></i>
+          </a>
+          <a href="https://linkedin.com/nilobyte" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-linkedin text-blue-600"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center text-gray-600 dark:text-gray-400">
+        <p>&copy; 2025 Nilobyte. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+    
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      htmlElement.classList.toggle('dark');
+      localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Initialize theme
+    if (localStorage.getItem('theme') === 'dark') {
+      htmlElement.classList.add('dark');
+    } else if (localStorage.getItem('theme') === 'light') {
+      htmlElement.classList.remove('dark');
+    }
+  </script>
+</body>
+</html>
