@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Nilobyte - Web Design & Automation Services</title>
+    <meta name="description" content="Get in touch with Nilobyte for custom web design, email templates, and workflow automation solutions.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter var', 'system-ui', '-apple-system', 'sans-serif'],
+                        display: ['Poppins', 'system-ui', '-apple-system', 'sans-serif']
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 8s ease infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {'background-position': '0% 50%'},
+                            '50%': {'background-position': '100% 50%'},
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS & Icons -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark:bg-gray-900 dark:text-gray-100 bg-gray-50 text-gray-900 transition-colors duration-300">
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-3 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-lg hover:scale-105 transition-transform">
+        <svg class="w-6 h-6 dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        <svg class="w-6 h-6 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+    </button>
+
+    <main class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="w-full max-w-2xl mx-auto" 
+             x-data="{ 
+                 activeSection: 1, 
+                 showSuccess: false,
+                 isLoading: false,
+                 formError: '',
+                 formData: {
+                     projectType: '',
+                     name: '',
+                     email: '',
+                     timeline: 'Flexible',
+                     message: '',
+                     attachment: null
+                 }
+             }">
+            
+            <!-- Progress Indicator -->
+            <div class="mb-12" data-aos="fade-up">
+                <div class="flex justify-center gap-2 mb-4">
+                    <template x-for="i in 3" :key="i">
+                        <div class="h-3 w-3 rounded-full transition-colors duration-300" 
+                            :class="i <= activeSection ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-700'"></div>
+                    </template>
+                </div>
+                <h1 class="text-4xl font-bold text-center font-display mb-4">Let's Create Magic</h1>
+                <p class="text-center text-gray-600 dark:text-gray-400">Tell us about your project needs</p>
+            </div>
+
+            <!-- Success Message -->
+            <div x-show="showSuccess" class="text-center" data-aos="zoom-in">
+                <div class="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                    <i class="fas fa-check text-4xl text-green-500"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Submission Received!</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8">We'll review your inquiry and get back within 24 hours.</p>
+                <a href="/" class="inline-block px-6 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors">
+                    ← Back to Home
+                </a>
+            </div>
+
+            <!-- Form -->
+            <form x-show="!showSuccess" 
+                  class="space-y-8"
+                  action="https://formspree.io/f/xrbpnknl"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  @submit.prevent="
+                    isLoading = true;
+                    fetch($el.action, {
+                        method: 'POST',
+                        body: new FormData($el),
+                        headers: { 'Accept': 'application/json' }
+                    }).then(response => {
+                        if (response.ok) {
+                            showSuccess = true;
+                            formError = '';
+                            $el.reset();
+                        } else {
+                            formError = 'Submission failed. Please try again.';
+                        }
+                    }).catch(() => {
+                        formError = 'Network error. Please check your connection.';
+                    }).finally(() => isLoading = false);
+                  ">
+
+                <!-- Honeypot Field -->
+                <input type="checkbox" name="_gotcha" class="hidden" style="display:none">
+
+                <!-- Step 1: Project Type -->
+                <div x-show="activeSection === 1" class="space-y-8">
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <template x-for="(type, index) in ['Web Design', 'Email Template', 'Automation', 'Something Else']" :key="index">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="projectType" x-model="formData.projectType" :value="type" required class="hidden peer">
+                                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:bg-blue-50/50 dark:peer-checked:bg-blue-900/20 transition-all hover:scale-[1.02]">
+                                    <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                        <i class="fas text-xl" 
+                                        :class="{
+                                            'fa-laptop-code': type === 'Web Design',
+                                            'fa-envelope-open-text': type === 'Email Template',
+                                            'fa-robot': type === 'Automation',
+                                            'fa-lightbulb': type === 'Something Else'
+                                        }"></i>
+                                    </div>
+                                    <h3 class="font-semibold mb-2" x-text="type"></h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                                        <template x-if="type === 'Web Design'">Responsive website development</template>
+                                        <template x-if="type === 'Email Template'">Custom HTML email design</template>
+                                        <template x-if="type === 'Automation'">Workflow optimization scripts</template>
+                                        <template x-if="type === 'Something Else'">Let's discuss unique solutions</template>
+                                    </p>
+                                </div>
+                            </label>
+                        </template>
+                    </div>
+                    <button @click="activeSection++" type="button" class="w-full py-4 bg-blue-500 text-white rounded-xl font-semibold hover:bg-blue-600 transition-colors">
+                        Continue
+                    </button>
+                </div>
+
+                <!-- Step 2: Basic Info -->
+                <div x-show="activeSection === 2" class="space-y-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Your Name</label>
+                            <input type="text" name="name" x-model="formData.name" required 
+                                   class="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email Address</label>
+                            <input type="email" name="_replyto" x-model="formData.email" required 
+                                   class="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Project Timeline</label>
+                            <select name="timeline" x-model="formData.timeline" class="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option>Flexible</option>
+                                <option>Within 1 month</option>
+                                <option>Urgent (1-2 weeks)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <button @click="activeSection--" type="button" 
+                                class="w-1/2 py-3 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                            Back
+                        </button>
+                        <button @click="activeSection++" type="button" 
+                                class="w-1/2 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Additional Details -->
+                <div x-show="activeSection === 3" class="space-y-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Project Details</label>
+                            <textarea name="message" x-model="formData.message" rows="4" required 
+                                      class="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                      placeholder="Tell us about your vision, goals, and any specific requirements..."></textarea>
+                        </div>
+                        
+                        <!-- File Upload -->
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Attachments (optional)</label>
+                            <input type="file" name="attachment" @change="formData.attachment = $event.target.files[0]" 
+                                   class="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg">
+                        </div>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div x-show="formError" class="text-red-500 text-center mb-4" x-text="formError"></div>
+
+                    <!-- Submit Button -->
+                    <div class="flex gap-4">
+                        <button @click="activeSection--" type="button" 
+                                class="w-1/2 py-3 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                            Back
+                        </button>
+                        <button type="submit" 
+                                class="w-1/2 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors flex items-center justify-center"
+                                :disabled="isLoading">
+                            <template x-if="!isLoading">
+                                <span>Submit Inquiry</span>
+                            </template>
+                            <template x-if="isLoading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </template>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({ once: true, duration: 800 });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Set initial theme
+        if (localStorage.getItem('theme') === 'dark') {
+            htmlElement.classList.add('dark');
+        } else if (localStorage.getItem('theme') === 'light') {
+            htmlElement.classList.remove('dark');
+        }
+    </script>
+</body>
+
+   <!-- Contact Footer -->
+   <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 py-16">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold font-display mb-6" data-aos="fade-up">Let's Build Something Amazing</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="100">
+          Have a project in mind? Let's make it reality
+        </p>
+        <a href="mailto:hello.nilobyte@gmail.com" 
+           class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-2xl font-semibold hover:bg-indigo-700 transition-colors shadow-lg"
+           data-aos="zoom-in">
+          hello.nilobyte@gmail.com
+        </a>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+          <img src="./assets/logo.webp" alt="Logo" class="h-12 w-12 mb-4 mx-auto md:mx-0">
+          <p class="text-gray-600 dark:text-gray-400">Digital Solutions Architect</p>
+        </div>
+        
+        <div class="flex space-x-6 mb-8 md:mb-0" data-aos="fade-up" data-aos-delay="100">
+          <a href="https://twitter.com/nilobytehq" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl transition-shadow">
+            <i class="fab fa-twitter text-blue-400"></i>
+          </a>
+          <a href="https://instagram.com/nilobytehq" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-instagram text-pink-500"></i>
+          </a>
+          <a href="https://youtube.com/@nilobyte" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-youtube text-red-600"></i>
+          </a>
+          <a href="https://tiktok.com/@nilobyte" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-tiktok text-gray-900 dark:text-gray-100"></i>
+          </a>
+          <a href="https://linkedin.com/in/nilobyte" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl">
+            <i class="fab fa-linkedin text-blue-600"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center text-gray-600 dark:text-gray-400">
+        <p>&copy; 2025 Nilobyte. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true, duration: 800 });
+      
+      // Dark Mode Toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const htmlElement = document.documentElement;
+  
+      themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+        localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+      });
+  
+      // Initialize theme
+      if (localStorage.getItem('theme') === 'dark') {
+        htmlElement.classList.add('dark');
+      } else if (localStorage.getItem('theme') === 'light') {
+        htmlElement.classList.remove('dark');
+      }
+    </script>
+</html>
