@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
- 
-  <!-- Favicons -->
+
+<!-- Favicons -->
 <link rel="icon" href="./assets/favicon.webp" sizes="any">
+<link rel="stylesheet" href="/assets/css/styles.css">
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHHMJFB8C0"></script>
 <script>
@@ -18,38 +20,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, web design, email templates, workflow automation, responsive websites, HTML email development, business automation, digital solutions, modern web design, custom email templates, workflow automation, Python scripts, API integration, small business solutions, startup branding, digital marketing tools">
   <link rel="canonical" href="https://nilobyte.com/">
   <title>Nilobyte — Sleek Web Design, Email Templates & Automation</title>
-  <meta name="description" content="Nilobyte: Modern, responsive websites; custom email templates; and workflow automations for creators, startups & small brands.">
+  <meta name="description" content="Nilobyte: Professional web design services, custom email templates, and workflow automation solutions. Responsive websites, HTML email development, and business automation for startups and SMEs.">
+  <meta name="keywords" content="web design, email templates, workflow automation, responsive websites, HTML email, business automation, Python automation, Tailwind CSS, web development">
+  <meta name="author" content="Nilobyte">
 
   <!-- Organization Schema -->
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Nilobyte",
-    "image": "https://nilobyte.com/assets/logo.webp",
-    "@id": "https://nilobyte.com",
-    "url": "https://nilobyte.com",
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 51.50845,
-      "longitude": 0.09980
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nilobyte",
+      "url": "https://nilobyte.com",
+      "logo": "https://nilobyte.com/assets/logo.webp",
+      "sameAs": [
+        "https://twitter.com/nilobytehq",
+        "https://linkedin.com/in/nilobyte"
       ],
-      "opens": "06:00",
-      "closes": "18:00"
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello.nilobyte@gmail.com",
+        "contactType": "customer service"
+      }
     }
-  </script>
+    </script>
+
+  <!-- Preconnects for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
 
   <!-- Open Graph (Facebook/LinkedIn) -->
 <meta property="og:title" content="Nilobyte — Sleek Web Design & Automation Services">
@@ -165,7 +163,7 @@
         </div>
         <h3 class="text-2xl font-bold mb-4">Workflow Automations</h3>
         <p class="text-gray-600 dark:text-gray-400 mb-6">Python & API-powered scripts to handle repetitive tasks and streamline your business flow.</p>
-        <a href="inquiry.html" class="inline-flex items-center font-medium text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors">
+        <class="inline-flex items-center font-medium text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors">
           Automate Now
           <i class="fas fa-arrow-right ml-2"></i>
         </a>
@@ -175,7 +173,9 @@
 
     <!-- Why Choose Nilobyte -->
     <section class="py-24 bg-white dark:bg-gray-800">
-      <div class="container mx-auto px-4 md:flex md:items-center gap-12">
+      <div class="container mx-auto px-4 md:flex md:items-start gap-12">
+    
+        <!-- Left: your original list -->
         <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
           <h2 class="text-4xl font-bold font-display mb-8">Why Choose Nilobyte?</h2>
           <ul class="space-y-6 text-lg">
@@ -217,16 +217,78 @@
             </li>
           </ul>
         </div>
-        <div class="md:w-1/2" data-aos="fade-left">
-          <img src="./assets/workflowillustration.webp"
-          alt="Workflow automation process showing data input transformed into email campaigns through Python automation"
-          width="800"
-          height="600"
-          loading="lazy"
-          class="rounded-2xl border-4 border-white dark:border-gray-800 shadow-lg hover:shadow-xl transition-shadow"
-          data-aos="fade-up"
-          srcset="C:\Users\Illua\OneDrive\Email attachments\Documents\Business\Webpage\workflowillustration.webp"
-          sizes="(max-width: 768px) 100vw, 50vw">
+
+        <div class="md:w-1/2 space-y-12" data-aos="fade-left">
+          
+          <!-- Three quick‑hit value cards -->
+          <div class="space-y-6">
+            <div class="p-6 bg-white dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600">
+              <h3 class="text-xl font-semibold mb-3">🖌️ From Sketch to Code</h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                Got a napkin sketch? A Figma file? PDF notes? We'll turn your raw ideas into clean, functional code – no “designer speak” needed.
+              </p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600">
+              <h3 class="text-xl font-semibold mb-3">📬 Email That Actually Works</h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                Tired of pretty emails that break in Gmail? We build templates that render properly everywhere – even in ancient Outlook versions.
+              </p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600">
+              <h3 class="text-xl font-semibold mb-3">🤖 Simple Automation for Real People</h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                If your spreadsheet is becoming unmanageable, we'll create Python scripts that automate the boring parts – no PhD required.
+              </p>
+            </div>
+          </div>
+    
+          <!-- Straightforward CTA block -->
+          <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl border-2 border-purple-200 dark:border-purple-900/50">
+            <h3 class="text-2xl font-bold mb-6">How We Work</h3>
+            
+            <div class="space-y-6 mb-8">
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center">
+                  1️⃣
+                </div>
+                <div>
+                  <p class="font-medium">Share Your Needs</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Email, DM, carrier pigeon – we'll adapt to your style</p>
+                </div>
+              </div>
+    
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center">
+                  2️⃣
+                </div>
+                <div>
+                  <p class="font-medium">Transparent Quote</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Fixed price or hourly – you choose</p>
+                </div>
+              </div>
+    
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
+                  3️⃣
+                </div>
+                <div>
+                  <p class="font-medium">Iterate Together</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Unlimited tweaks until it feels right</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="space-y-4">
+              <a href="inquiry.html" 
+                 class="block w-full text-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors">
+                Start with a Quick Chat
+              </a>
+              <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                No pressure • No templates • Just real talk
+              </p>
+            </div>
+          </div>
+    
         </div>
       </div>
     </section>
