@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeta Corporation | Pioneering Business Solutions</title>
+    <meta name="description" content="Zeta Corporation: Driving future-forward transformation through innovative technology and strategic expertise.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Refined Corporate Palette */
+            --color-primary: #0D1B2A;  /* Deeper, richer Navy/Near-Black */
+            --color-secondary: #415A77; /* Muted Slate Blue */
+            --color-accent: #778DA9;   /* Softer Blue-Gray */
+            --color-highlight: #E0E1DD; /* Pale Silver/Off-White */
+            --color-bg: #FFFFFF;
+            --color-bg-alt: #F9FAFB;  /* Very light gray */
+            --color-text-base: #1F2937; /* Dark Gray */
+            --color-text-muted: #6B7280; /* Medium Gray */
+            --color-white: #FFFFFF;
+
+            --font-main: 'Inter', sans-serif;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother cubic-bezier */
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-base);
+            font-family: var(--font-main);
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            color: var(--color-primary);
+            line-height: 1.25; /* Slightly tighter line height for headings */
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em; /* Subtle negative spacing for sleekness */
+        }
+        h1 { font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.025em; }
+        h2 { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700;}
+        h3 { font-size: clamp(1.3rem, 3.5vw, 1.6rem); font-weight: 600;}
+
+        /* --- Header --- */
+        .corp-header-v2 {
+            position: sticky; top: 0; z-index: 50;
+            background-color: rgba(255, 255, 255, 0.85); /* More transparency */
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem; /* Tailwind py-3 px-8 approx, slightly less padding */
+            border-bottom: 1px solid #f3f4f6; /* Lighter border */
+            transition: box-shadow 0.2s ease-in-out;
+        }
+        .corp-header-v2.scrolled { /* Add shadow on scroll via JS */
+             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .corp-nav-link-v2 {
+            font-size: 0.9rem; font-weight: 500; color: var(--color-text-base);
+            padding: 0.75rem 0; /* Vertical padding for click area */ margin: 0 0.75rem; /* Tailwind mx-3 */
+            position: relative; transition: color 0.2s ease;
+        }
+        .corp-nav-link-v2::after { /* Thinner, centered underline effect */
+            content: ''; position: absolute; bottom: 0.5rem; left: 50%; transform: translateX(-50%) scaleX(0);
+            width: 80%; height: 1px; background-color: var(--color-primary);
+            transform-origin: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .corp-nav-link-v2:hover { color: var(--color-primary); }
+        .corp-nav-link-v2:hover::after { transform: translateX(-50%) scaleX(1); }
+
+        .header-cta-v2 { /* Refined CTA */
+            background-color: var(--color-primary); color: var(--color-white);
+            font-size: 0.85rem; font-weight: 500; padding: 0.7rem 1.4rem; /* Slightly adjusted padding */
+            border-radius: 6px; transition: var(--transition-smooth);
+            border: 1px solid transparent; /* Prep for hover effect */
+        }
+        .header-cta-v2:hover {
+            background-color: var(--color-white); color: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateY(-2px); box-shadow: 0 5px 12px rgba(13, 27, 42, 0.15);
+        }
+
+        /* --- Hero Section --- */
+        .corp-hero-v2 {
+            background-color: var(--color-bg); /* Clean white */
+            padding: 8rem 2rem 6rem 2rem; /* Tailwind py-32 pb-24 px-8 */
+            min-height: 80vh; display: flex; align-items: center; position: relative; overflow: hidden;
+        }
+        /* Abstract background lines - more subtle */
+        .corp-hero-v2::before {
+             content: ''; position: absolute; inset: 0; z-index: 1;
+             background-image: linear-gradient(to right, var(--color-bg-alt) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--color-bg-alt) 1px, transparent 1px);
+             background-size: 50px 50px; opacity: 0.5;
+             mask-image: radial-gradient(circle at 80% 50%, black 30%, transparent 70%);
+        }
+        .hero-content-v2 { position: relative; z-index: 2; }
+        .hero-headline-v2 { color: var(--color-primary); }
+        .hero-subheadline-v2 {
+            font-size: 1.2rem; /* Tailwind text-lg */ color: var(--color-text-muted);
+            max-width: 650px; margin-bottom: 2.5rem; /* Tailwind mb-10 */ font-weight: 400;
+        }
+        .hero-cta-v2 { /* Sleeker CTA */
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white); font-size: 1rem; font-weight: 500;
+            padding: 1rem 2.2rem; /* Tailwind px-9 py-4 */ border-radius: 8px;
+            transition: var(--transition-smooth); box-shadow: 0 5px 15px rgba(65, 90, 119, 0.2);
+            display: inline-block;
+        }
+        .hero-cta-v2:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(65, 90, 119, 0.3);
+        }
+
+        /* --- Section Styling --- */
+        .corp-section-v2 { padding: 6rem 2rem; /* Increased padding */ }
+        .corp-section-v2.bg-alt { background-color: var(--color-bg-alt); }
+        .section-title-v2 { text-align: center; margin-bottom: 1rem; font-weight: 700; }
+        .section-subtitle-v2 { text-align: center; color: var(--color-text-muted); max-width: 750px; margin: 0 auto 4rem auto; font-size: 1.15rem; line-height: 1.8; font-weight: 400;}
+
+        /* --- Services Overview --- */
+        .service-card-v2 {
+            background-color: transparent; /* Use section background */
+            border: none; /* Remove border */
+            padding: 1rem; /* Adjust padding */
+            text-align: center; /* Center content */
+            transition: transform 0.3s ease;
+        }
+         .service-card-v2:hover { transform: translateY(-8px); }
+
+        .service-icon-wrapper {
+            width: 70px; height: 70px; margin: 0 auto 1.5rem auto; /* Tailwind mb-6 */
+            border-radius: 50%; background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-bg) 100%);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+        }
+         .service-card-v2:hover .service-icon-wrapper {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            box-shadow: 0 8px 20px rgba(65, 90, 119, 0.2);
+         }
+
+        .service-icon-v2 {
+            font-size: 1.8rem; /* Tailwind text-3xl approx */
+            color: var(--color-primary);
+            transition: var(--transition-smooth);
+        }
+        .service-card-v2:hover .service-icon-v2 { color: var(--color-white); transform: scale(1.1); }
+
+        .service-card-v2 h3 { color: var(--color-primary); margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600;}
+        .service-card-v2 p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+        /* --- Trust / Credibility Section --- */
+        .trust-section { background-color: var(--color-primary); color: var(--color-white); }
+        .trust-section h2 { color: var(--color-white); }
+        .stat-item-v2 { text-align: center; }
+        .stat-number-v2 {
+            font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
+            color: var(--color-highlight); line-height: 1; margin-bottom: 0.5rem;
+            /* Conceptual animation hook */
+             /* opacity: 0; transform: translateY(10px); */
+        }
+        .stat-label-v2 { font-size: 0.9rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px; }
+        .client-logos-v2 img {
+            max-height: 45px; filter: brightness(0) invert(1); /* Make logos white */
+            opacity: 0.7; transition: var(--transition-smooth); margin: 0 1.5rem;
+        }
+        .client-logos-v2 img:hover { opacity: 1; transform: scale(1.05); }
+
+        /* --- Insights Section --- */
+        .insight-card-v2 {
+            background-color: var(--color-bg);
+            border-radius: 12px; /* More rounded */
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: var(--transition-smooth);
+             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+             display: flex; flex-direction: column; height: 100%; /* Ensure equal height */
+        }
+         .insight-card-v2:hover {
+             transform: translateY(-6px);
+             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+         }
+        .insight-image-v2 { aspect-ratio: 16 / 9; overflow: hidden; }
+        .insight-image-v2 img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .insight-card-v2:hover .insight-image-v2 img { transform: scale(1.05); }
+        .insight-content-v2 { padding: 1.75rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .insight-category-v2 { font-size: 0.75rem; font-weight: 600; color: var(--color-secondary); text-transform: uppercase; margin-bottom: 0.75rem; letter-spacing: 0.7px; }
+        .insight-title-v2 { font-size: 1.2rem; font-weight: 600; margin-bottom: auto; /* Pushes link down */ padding-bottom: 1rem; line-height: 1.4; }
+        .insight-link-v2 { font-size: 0.9rem; font-weight: 500; color: var(--color-primary); display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; }
+        .insight-link-v2 .fa-arrow-right { font-size: 0.7rem; transition: transform 0.2s ease; }
+        .insight-link-v2:hover { color: var(--color-secondary); }
+        .insight-link-v2:hover .fa-arrow-right { transform: translateX(4px); }
+
+        /* --- Footer --- */
+        .corp-footer-v2 {
+            background-color: var(--color-primary); color: var(--color-accent);
+            padding: 5rem 2rem 2rem 2rem; font-size: 0.9rem;
+        }
+        .corp-footer-v2 h5 { color: var(--color-highlight); font-size: 1rem; font-weight: 600; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.5px;}
+        .corp-footer-v2 a { color: var(--color-accent); transition: var(--transition-smooth); }
+        .corp-footer-v2 a:hover { color: var(--color-white); }
+        .footer-bottom-v2 { border-top: 1px solid rgba(255, 255, 255, 0.15); margin-top: 4rem; padding-top: 2rem; }
+        .social-links-corp-v2 a { color: var(--color-accent); font-size: 1.3rem; transition: var(--transition-smooth); }
+        .social-links-corp-v2 a:hover { color: var(--color-white); transform: scale(1.1); }
+
+         /* --- Animation Utilities --- */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+         /* Use JS Intersection Observer to add 'is-visible' */
+
+    </style>
+</head>
+<body>
+
+    <header class="corp-header-v2">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary" title="Zeta Corporation Home">
+                <span class="font-light">{</span> ZetaCorp <span class="font-light">}</span>
+            </a>
+            <nav class="hidden lg:flex items-center">
+                <a href="#services" class="corp-nav-link-v2">Solutions</a>
+                <a href="#about" class="corp-nav-link-v2">About Us</a>
+                <a href="#insights" class="corp-nav-link-v2">Insights</a>
+                <a href="#careers" class="corp-nav-link-v2">Careers</a>
+            </nav>
+            <a href="#contact" class="header-cta-v2 hidden lg:inline-block">Request Consultation</a>
+            <button class="lg:hidden text-primary text-xl" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="corp-hero-v2">
+        <div class="container mx-auto hero-content-v2 lg:w-1/2">
+            <h1 class="hero-headline-v2 reveal-on-scroll is-visible" style="transition-delay: 0.1s;">Architecting the Future of Business</h1>
+            <p class="hero-subheadline-v2 reveal-on-scroll is-visible" style="transition-delay: 0.2s;">
+                We partner with visionary leaders to build resilient, adaptive, and high-performing organizations through strategic technology integration.
+            </p>
+            <a href="#services" class="hero-cta-v2 reveal-on-scroll is-visible" style="transition-delay: 0.3s;">Discover How</a>
+        </div>
+         <div class="absolute right-0 top-0 bottom-0 lg:w-1/2 z-1 hidden lg:flex items-center justify-center">
+            <div class="w-3/4 h-3/4 opacity-10">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="animate-[spin_60s_linear_infinite]">
+                    <path d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" stroke="var(--color-accent)" stroke-width="0.5" fill="none"/>
+                    <path d="M 50,50 m -30,0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" stroke="var(--color-accent)" stroke-width="0.5" fill="none" stroke-dasharray="2,2"/>
+                    <path d="M 50,50 m -20,0 a 20,20 0 1,1 40,0 a 20,20 0 1,1 -40,0" stroke="var(--color-accent)" stroke-width="0.5" fill="none"/>
+                </svg>
+            </div>
+         </div>
+    </section>
+
+    <section id="services" class="corp-section-v2">
+        <div class="container mx-auto">
+            <h2 class="section-title-v2 reveal-on-scroll">Our Expertise</h2>
+            <p class="section-subtitle-v2 reveal-on-scroll" style="transition-delay: 0.1s;">Tailored solutions designed for impact, scalability, and sustainable growth.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="service-card-v2 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="service-icon-wrapper">
+                        <i class="fas fa-drafting-compass service-icon-v2"></i>
+                    </div>
+                    <h3>Strategic Consulting</h3>
+                    <p>Navigate market shifts and achieve objectives with data-backed strategic guidance.</p>
+                </div>
+                <div class="service-card-v2 reveal-on-scroll" style="transition-delay: 0.3s;">
+                     <div class="service-icon-wrapper">
+                         <i class="fas fa-laptop-code service-icon-v2"></i>
+                     </div>
+                    <h3>Technology Implementation</h3>
+                    <p>Integrate cutting-edge platforms seamlessly to enhance efficiency and capabilities.</p>
+                </div>
+                <div class="service-card-v2 reveal-on-scroll" style="transition-delay: 0.4s;">
+                      <div class="service-icon-wrapper">
+                          <i class="fas fa-layer-group service-icon-v2"></i>
+                      </div>
+                    <h3>Managed Services</h3>
+                    <p>Ensure optimal performance and reliability with our proactive support and management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="corp-section-v2 trust-section">
+        <div class="container mx-auto">
+            <h2 class="section-title-v2 reveal-on-scroll">Proven Partnerships, Tangible Results</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 my-16">
+                <div class="stat-item-v2 reveal-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="stat-number-v2">30+</div>
+                    <div class="stat-label-v2">Global Industries Served</div>
+                </div>
+                 <div class="stat-item-v2 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="stat-number-v2">1.5B+</div>
+                    <div class="stat-label-v2">Value Delivered (USD)</div>
+                </div>
+                 <div class="stat-item-v2 reveal-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="stat-number-v2">450+</div>
+                    <div class="stat-label-v2">Dedicated Experts</div>
+                </div>
+            </div>
+            <div class="client-logos-v2 flex justify-center items-center flex-wrap gap-y-6 reveal-on-scroll" style="transition-delay: 0.4s;">
+                <img src="assets\images\zeta4.webp" alt="Client Logo 1">
+                <img src="assets\images\zeta5.webp" alt="Client Logo 2">
+                <img src="assets\images\zeta6.webp" alt="Client Logo 3">
+                <img src="assets\images\zeta7.webp" alt="Client Logo 4">
+                <img src="assets\images\zeta8.webp" alt="Client Logo 5">
+            </div>
+        </div>
+    </section>
+
+    <section id="insights" class="corp-section-v2">
+        <div class="container mx-auto">
+            <h2 class="section-title-v2 reveal-on-scroll">Industry Perspectives</h2>
+             <p class="section-subtitle-v2 reveal-on-scroll" style="transition-delay: 0.1s;">Sharing knowledge and foresight to help you stay ahead of the curve.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="insight-card-v2 reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <a href="#" class="block insight-image-v2">
+                        <img src="assets\images\zeta1.webp" alt="Abstract Data Visualization">
+                    </a>
+                    <div class="insight-content-v2">
+                        <div class="insight-category-v2">Data Strategy</div>
+                        <h3 class="insight-title-v2"><a href="#" class="hover:text-secondary">Unlocking Value: The Shift Towards Actionable Intelligence</a></h3>
+                        <a href="#" class="insight-link-v2">Read Analysis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                 <article class="insight-card-v2 reveal-on-scroll" style="transition-delay: 0.3s;">
+                     <a href="#" class="block insight-image-v2">
+                        <img src="assets\images\zeta2.webp" alt="Modern Office Workplace">
+                    </a>
+                    <div class="insight-content-v2">
+                        <div class="insight-category-v2">Future of Work</div>
+                        <h3 class="insight-title-v2"><a href="#" class="hover:text-secondary">Hybrid Models Reimagined: Optimizing Collaboration</a></h3>
+                        <a href="#" class="insight-link-v2">Explore Models <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                 <article class="insight-card-v2 reveal-on-scroll" style="transition-delay: 0.4s;">
+                    <a href="#" class="block insight-image-v2">
+                        <img src="assets\images\zeta3.webp" alt="Global Network Connections">
+                    </a>
+                    <div class="insight-content-v2">
+                        <div class="insight-category-v2">Risk Management</div>
+                         <h3 class="insight-title-v2"><a href="#" class="hover:text-secondary">Navigating Geopolitical Uncertainty in Global Operations</a></h3>
+                         <a href="#" class="insight-link-v2">Assess Risk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+             <div class="text-center mt-12 reveal-on-scroll" style="transition-delay: 0.5s;">
+                 <a href="#" class="hero-cta-v2 !text-sm !py-3 !px-6">View All Insights</a>
+             </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="corp-footer-v2">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-8">
+                <div class="md:col-span-2">
+                    <h5 class="text-xl font-bold text-white mb-4">{ ZetaCorp }</h5>
+                    <p class="mb-6 text-sm leading-relaxed">Architecting the future of business through innovative technology and strategic expertise.</p>
+                     <div class="social-links-corp-v2 flex space-x-5">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Glassdoor"><i class="fas fa-briefcase"></i></a> {/* Example */}
+                    </div>
+                </div>
+                 <div>
+                    <h5>Company</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Newsroom</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5>Solutions</h5>
+                     <ul class="space-y-3">
+                        <li><a href="#">Strategic Consulting</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Managed Services</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5>Resources</h5>
+                     <ul class="space-y-3">
+                        <li><a href="#">Insights Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">White Papers</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5>Connect</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-v2 text-center text-xs opacity-70 flex flex-col sm:flex-row justify-between items-center">
+                <span>&copy; 2025 Zeta Corporation. All Rights Reserved.</span>
+                <span class="mt-2 sm:mt-0"><a href="#" class="mx-2">Privacy Policy</a> | <a href="#" class="mx-2">Terms of Use</a> | <a href="#" class="mx-2">Cookie Settings</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Simple Fade-In Animation on Scroll ---
+        const animatedElements = document.querySelectorAll('.reveal-on-scroll');
+        const observerOptions = { threshold: 0.1 };
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const intersectionObserver = new IntersectionObserver(observerCallback, observerOptions);
+        animatedElements.forEach(el => intersectionObserver.observe(el));
+
+        // --- Header Scroll Effect ---
+        const header = document.querySelector('.corp-header-v2');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) { // Add shadow after scrolling down slightly
+                header.classList.add('scrolled');
+            } else {
+                 header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Conceptual: Number Counter Animation ---
+        // const stats = document.querySelectorAll('.stat-number-v2');
+        // // Use Intersection Observer to trigger when stats section is visible
+        // // Animate numbers from 0 to target value using requestAnimationFrame or a library
+    </script>
+
+</body>
+</html>

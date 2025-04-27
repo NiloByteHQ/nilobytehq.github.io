@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gamma - Editorial Blog Platform Example</title>
+    <meta name="description" content="Example blog platform interface (Project Gamma), showcasing an immersive, editorial design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-accent: #c09a6b; /* Example: Warm Bronze/Gold */
+            --text-color-base: #e0e0e0; /* Off-white */
+            --text-color-muted: #a0a0a0; /* Lighter gray */
+            --background-color: #1a1a1a; /* Deep charcoal/off-black */
+            --card-background: #242424; /* Slightly lighter charcoal */
+            --border-color: rgba(192, 154, 107, 0.2); /* Subtle bronze border */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Raleway', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color-base);
+            font-family: var(--font-body);
+            font-size: 17px; /* Slightly larger base size for readability */
+            line-height: 1.7;
+            position: relative; /* Needed for texture overlay */
+        }
+
+        /* Subtle Noise/Texture Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.7"/></svg>');
+        }
+
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 900; /* Bolder headings */
+            color: var(--text-color-base);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        /* Hero Section: Full Bleed Featured Post */
+        .hero-featured {
+            height: 85vh; /* Adjust height as needed */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end; /* Align content to bottom */
+            color: white;
+        }
+        .hero-background { /* For image/video */
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center center;
+            /* background-image: url('https://via.placeholder.com/1920x1080/333333/555555?text=Featured+Article+Background'); */
+            z-index: 1;
+            transition: transform 0.5s ease-out; /* For parallax effect */
+        }
+        .hero-featured:hover .hero-background {
+             /* Slight zoom on hover */
+             /* transform: scale(1.03); */
+        }
+        .hero-overlay { /* Gradient overlay for text readability */
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 3rem 1.5rem; /* Use Tailwind p-6 md:p-12 */
+            max-width: 800px; /* Constrain content width */
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive title */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .hero-meta {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0.5rem;
+        }
+        .hero-meta span { margin-right: 1rem; }
+        .hero-meta .category {
+            color: var(--primary-accent);
+            font-weight: 700;
+        }
+
+        /* Article Grid Styles */
+        .article-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 4px; /* Subtle rounding */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* For hover overlay */
+        }
+        .article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .article-image-container {
+            aspect-ratio: 16 / 10; /* Widescreen aspect ratio */
+            overflow: hidden;
+            position: relative;
+        }
+        .article-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.3s ease;
+        }
+        .article-card:hover .article-image-container img {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+        /* Optional: Color overlay on image hover */
+        .article-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: var(--primary-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            mix-blend-mode: multiply; /* Or 'overlay', 'screen' etc. */
+        }
+        .article-card:hover .article-image-container::after {
+            opacity: 0.2;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+        .article-title {
+            font-size: 1.5rem; /* Slightly larger title */
+            font-weight: 700; /* Less bold than headers */
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+        .article-title a {
+            text-decoration: none;
+            color: var(--text-color-base);
+            transition: color 0.2s ease;
+        }
+         .article-title a:hover {
+            color: var(--primary-accent);
+         }
+
+        .article-excerpt {
+            font-size: 1rem;
+            color: var(--text-color-muted);
+            margin-bottom: 1rem;
+            display: -webkit-box; /* Clamp text */
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .article-meta {
+            font-size: 0.8rem;
+            color: var(--text-color-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .article-meta .category {
+            color: var(--primary-accent);
+            font-weight: 500; /* Semi-bold */
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background-color: var(--card-background);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Scroll Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px); /* Start slightly lower */
+            transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Add staggered delays using inline style or JS */
+
+    </style>
+</head>
+<body>
+
+    <header class="py-6 px-4 absolute top-0 left-0 right-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold font-heading text-white" title="Project Gamma Home">
+                Gamma<span class="text-primary-accent">.</span>
+            </a>
+            <nav class="hidden md:flex space-x-6 text-sm uppercase tracking-wider">
+                <a href="#" class="text-white/80 hover:text-white transition-colors">Culture</a>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">Tech</a>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">Ideas</a>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">Futures</a>
+            </nav>
+            <div>
+                <button class="text-white/80 hover:text-white transition-colors" aria-label="Search">
+                    <i class="fas fa-search fa-lg"></i>
+                </button>
+                </div>
+        </div>
+    </header>
+
+    <section class="hero-featured reveal-on-scroll is-visible">
+        <div class="hero-background"
+             style="background-image: url('https://via.placeholder.com/1920x1080/5a5a5a/eeeeee?text=Breathtaking+Image+Here');"
+             data-parallax-speed="0.3">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container mx-auto">
+            <div class="hero-meta">
+                <span class="category">Ideas</span> • <span>By Ada Lovelace</span> • <span>Oct 26, 2025</span> • <span>7 min read</span>
+            </div>
+            <h1 class="hero-title">The Algorithmic Muse: Where Creativity Meets Computation</h1>
+            <a href="#" class="mt-4 inline-block text-primary-accent font-semibold uppercase tracking-wider text-sm hover:underline">
+                Read Article <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </a>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-4xl md:text-5xl mb-12 text-center reveal-on-scroll">Latest Insights</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            <article class="article-card reveal-on-scroll" style="transition-delay: 0.1s;">
+                <a href="#" class="block article-image-container">
+                    <img src="https://via.placeholder.com/600x400/6b6b6b/dddddd?text=Article+Image+1" alt="Abstract Tech Background" loading="lazy">
+                </a>
+                <div class="article-content">
+                    <div class="article-meta mb-2">
+                        <span class="category">Tech</span> • <span>Oct 25, 2025</span>
+                    </div>
+                    <h3 class="article-title">
+                        <a href="#">Decoding the Quantum Leap: What's Next?</a>
+                    </h3>
+                    <p class="article-excerpt">Exploring the potential and challenges of quantum computing as it moves from theory to potential reality.</p>
+                </div>
+            </article>
+
+             <article class="article-card reveal-on-scroll" style="transition-delay: 0.2s;">
+                <a href="#" class="block article-image-container">
+                    <img src="https://via.placeholder.com/600x400/7c7c7c/eeeeee?text=Article+Image+2" alt="Urban Culture Street Art" loading="lazy">
+                </a>
+                <div class="article-content">
+                    <div class="article-meta mb-2">
+                        <span class="category">Culture</span> • <span>Oct 24, 2025</span>
+                    </div>
+                    <h3 class="article-title">
+                        <a href="#">The Concrete Canvas: Modern Street Art's Evolution</a>
+                    </h3>
+                    <p class="article-excerpt">From ephemeral tags to gallery installations, tracing the journey and impact of contemporary street art.</p>
+                </div>
+            </article>
+
+             <article class="article-card reveal-on-scroll" style="transition-delay: 0.3s;">
+                <a href="#" class="block article-image-container">
+                    <img src="https://via.placeholder.com/600x400/8d8d8d/f0f0f0?text=Article+Image+3" alt="Person thinking deeply" loading="lazy">
+                </a>
+                <div class="article-content">
+                    <div class="article-meta mb-2">
+                        <span class="category">Ideas</span> • <span>Oct 23, 2025</span>
+                    </div>
+                    <h3 class="article-title">
+                        <a href="#">Beyond Binary: Rethinking Problem Solving</a>
+                    </h3>
+                    <p class="article-excerpt">Challenging conventional thinking patterns and embracing complexity for innovative solutions.</p>
+                </div>
+            </article>
+
+             <article class="article-card md:col-span-2 reveal-on-scroll" style="transition-delay: 0.1s;"> {/* Spanning two columns */}
+                <a href="#" class="block article-image-container">
+                    <img src="https://via.placeholder.com/1200x800/6a6a6a/dddddd?text=Large+Format+Image" alt="Futuristic Cityscape" loading="lazy">
+                </a>
+                <div class="article-content">
+                    <div class="article-meta mb-2">
+                        <span class="category">Futures</span> • <span>Oct 22, 2025</span>
+                    </div>
+                    <h3 class="article-title">
+                        <a href="#">Designing Tomorrow's Cities: Sustainable Urbanism</a>
+                    </h3>
+                    <p class="article-excerpt">A look into the architectural and technological innovations shaping the future of urban living environments globally.</p>
+                </div>
+            </article>
+
+            <article class="article-card reveal-on-scroll" style="transition-delay: 0.2s;">
+                 <a href="#" class="block article-image-container">
+                    <img src="https://via.placeholder.com/600x400/7a7a7a/eeeeee?text=Article+Image+5" alt="Close up on circuit board" loading="lazy">
+                </a>
+                <div class="article-content">
+                     <div class="article-meta mb-2">
+                        <span class="category">Tech</span> • <span>Oct 21, 2025</span>
+                    </div>
+                    <h3 class="article-title">
+                        <a href="#">The Rise of Neuromorphic Computing</a>
+                    </h3>
+                    <p class="article-excerpt">How brain-inspired chips could revolutionize AI and machine learning efficiency.</p>
+                </div>
+            </article>
+
+             </div>
+
+        <div class="text-center mt-16 reveal-on-scroll">
+            <button class="px-8 py-3 border border-primary-accent text-primary-accent rounded-full hover:bg-primary-accent hover:text-background-color transition-colors font-medium uppercase text-sm tracking-wider">
+                Load More Articles
+            </button>
+        </div>
+
+    </main>
+
+    <section class="newsletter-section py-16 md:py-20 px-4 reveal-on-scroll">
+        <div class="container mx-auto text-center max-w-2xl">
+            <h2 class="text-3xl md:text-4xl mb-4">Stay Ahead of the Curve</h2>
+            <p class="text-lg text-text-color-muted mb-8">Subscribe for curated insights and groundbreaking ideas delivered weekly.</p>
+            <form class="flex max-w-md mx-auto">
+                <input type="email" placeholder="your.email@example.com" class="flex-grow bg-background-color border border-border-color px-4 py-3 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-accent/50 placeholder-text-color-muted" required>
+                <button type="submit" class="bg-primary-accent text-background-color px-6 py-3 rounded-r-md font-semibold hover:opacity-90 transition-opacity">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 px-4">
+        <div class="container mx-auto text-center text-text-color-muted text-sm">
+            <div class="mb-4">
+                <a href="#" class="mx-2 hover:text-primary-accent">About</a> •
+                <a href="#" class="mx-2 hover:text-primary-accent">Contact</a> •
+                <a href="#" class="mx-2 hover:text-primary-accent">Privacy</a>
+            </div>
+            <p>&copy; 2025 Project Gamma. An Editorial Blog Example.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Scroll Reveal ---
+        const scrollElements = document.querySelectorAll('.reveal-on-scroll');
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return ( elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend );
+        };
+        const displayScrollElement = (element) => { element.classList.add('is-visible'); };
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.1)) { displayScrollElement(el); }
+            })
+        }
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation(); // Initial check
+
+        // --- Simple Parallax Effect ---
+        const parallaxElement = document.querySelector('.hero-background[data-parallax-speed]');
+        if (parallaxElement) {
+             const speed = parseFloat(parallaxElement.getAttribute('data-parallax-speed')) || 0.5;
+             window.addEventListener('scroll', () => {
+                const yOffset = window.pageYOffset;
+                // Adjust the multiplier (e.g., 0.1) for desired parallax intensity
+                parallaxElement.style.transform = `translateY(${yOffset * speed * 0.1}px)`;
+            });
+        }
+    </script>
+
+</body>
+</html>

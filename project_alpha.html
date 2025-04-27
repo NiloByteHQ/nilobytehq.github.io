@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Alpha - Tech Startup Landing Page Example</title>
+    <meta name="description" content="Example landing page for Project Alpha, showcasing modern web design techniques.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: #00f2ea; /* Neon Teal */
+            --secondary-color: #ff00ff; /* Magenta */
+            --accent-color: #f8f8f8; /* Light Gray/White */
+            --dark-bg: #111827; /* Dark Gray */
+            --text-color: #e5e7eb; /* Lighter Gray */
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Space Mono', monospace;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), #4f46e5, var(--primary-color));
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+            opacity: 0.15; /* Subtle background */
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glitch Effect (Subtle) on Title Hover */
+        .glitch-title {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(3rem, 10vw, 7rem); /* Responsive font size */
+            color: var(--accent-color);
+            position: relative;
+            cursor: default;
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        .glitch-title:hover {
+           color: var(--primary-color); /* Change color on hover */
+           /* Optional: Add subtle animation */
+           /* animation: slight-glitch 0.5s infinite alternate steps(2, start); */
+        }
+
+
+        /* Magnetic Button Effect (Conceptual - Requires JS) */
+        .magnetic-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--dark-bg);
+            background-color: var(--primary-color);
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 242, 234, 0.3); /* Neon Glow */
+        }
+
+        .magnetic-button:hover {
+            transform: scale(1.1); /* Scale up */
+            background-color: var(--secondary-color); /* Change color */
+            box-shadow: 0 8px 25px rgba(255, 0, 255, 0.4); /* Magenta Glow */
+        }
+        /* Add JS for actual magnetic effect pulling towards cursor */
+
+        /* Feature Section - Asymmetric Grid & Parallax BG */
+        .features {
+            position: relative;
+            padding: 10vh 0;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05); /* Glassmorphism */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative; /* For pseudo-elements */
+            overflow: hidden; /* Ensure pseudo-elements stay within bounds */
+        }
+        .feature-card:before { /* Gradient border effect on hover */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            padding: 1px; /* Border thickness */
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        .feature-card:hover:before {
+             opacity: 1;
+        }
+
+        .feature-icon { /* Example animated icon */
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        /* Scroll-triggered Animations (Conceptual - Requires JS Observer) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Other Custom Styles */
+        h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+
+        p {
+            line-height: 1.7;
+            max-width: 65ch; /* Improve readability */
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-content { text-align: center; }
+            .features .grid { grid-template-columns: 1fr; } /* Stack features on mobile */
+            .magnetic-button { padding: 0.8rem 2rem; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+
+    <section class="hero px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="hero-content md:w-1/2 text-center md:text-left">
+                <h1 class="glitch-title mb-6">Project Alpha</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-xl mx-auto md:mx-0">
+                    The revolutionary tech solution that redefines [Target Problem]. Sleek, intuitive, and powerful.
+                </p>
+                <button class="magnetic-button">
+                    Launch Alpha
+                </button>
+            </div>
+            <div class="hero-visual md:w-1/2 flex justify-center items-center animate-on-scroll">
+                <div class="w-64 h-64 md:w-96 md:h-96 bg-gradient-to-br from-white/10 to-white/0 rounded-full border border-white/20 backdrop-filter backdrop-blur-md flex items-center justify-center shadow-xl animate-[spin_20s_linear_infinite]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-24 h-24 md:w-32 md:h-32 text-primary-color animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L1.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L25.5 5.25l-.813 2.846a4.5 4.5 0 0 0-3.09 3.09L18.25 12ZM18.25 12l-.813 2.846a4.5 4.5 0 0 0-3.09 3.09L11.25 18.75l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L18.25 12Z" />
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features px-6 relative">
+         <div class="absolute top-1/4 left-10 w-48 h-48 bg-secondary-color/10 rounded-full blur-2xl -z-10" data-parallax-speed="0.2"></div>
+        <div class="absolute bottom-1/4 right-10 w-64 h-64 bg-primary-color/10 rounded-full blur-3xl -z-10" data-parallax-speed="0.3"></div>
+
+        <div class="container mx-auto text-center mb-16 animate-on-scroll">
+            <h2>Why Alpha?</h2>
+            <p class="text-lg max-w-2xl mx-auto">Experience the future, today. Built with cutting-edge tech for unparalleled performance.</p>
+        </div>
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="feature-card animate-on-scroll" style="transition-delay: 0.1s;">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="feature-icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                 </svg>
+                <h3>Blazing Speed</h3>
+                <p>Optimized core ensures lightning-fast operations and responses.</p>
+            </div>
+            <div class="feature-card animate-on-scroll" style="transition-delay: 0.2s;">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="feature-icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                 </svg>
+                <h3>Ironclad Security</h3>
+                <p>State-of-the-art encryption and protocols protect your data.</p>
+            </div>
+            <div class="feature-card animate-on-scroll" style="transition-delay: 0.3s;">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="feature-icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                </svg>
+                <h3>Intuitive Interface</h3>
+                <p>Effortless usability designed with user experience at its core.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works py-20 px-6">
+        <div class="container mx-auto text-center mb-16 animate-on-scroll">
+            <h2>Simple Steps to Awesomeness</h2>
+        </div>
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+             <div class="animate-on-scroll" style="transition-delay: 0.1s;">
+                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-color/20 border border-primary-color/50 text-primary-color text-2xl font-display font-bold">1</div>
+                 <h3 class="text-xl">Sign Up</h3>
+                 <p>Create your account in seconds.</p>
+             </div>
+             <div class="animate-on-scroll" style="transition-delay: 0.2s;">
+                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-color/20 border border-primary-color/50 text-primary-color text-2xl font-display font-bold">2</div>
+                 <h3 class="text-xl">Configure</h3>
+                 <p>Tailor Alpha to your specific needs.</p>
+             </div>
+             <div class="animate-on-scroll" style="transition-delay: 0.3s;">
+                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-color/20 border border-primary-color/50 text-primary-color text-2xl font-display font-bold">3</div>
+                 <h3 class="text-xl">Launch</h3>
+                 <p>Unleash the power of Project Alpha.</p>
+             </div>
+        </div>
+    </section>
+
+    <section class="cta py-20 px-6 bg-white/5">
+        <div class="container mx-auto text-center animate-on-scroll">
+            <h2 class="mb-6">Ready to Join the Future?</h2>
+            <p class="text-lg mb-8 max-w-xl mx-auto">Get early access to Project Alpha and be among the first to experience the revolution.</p>
+            <button class="magnetic-button text-lg">
+                Request Early Access
+            </button>
+        </div>
+    </section>
+
+    <footer class="py-10 px-6 text-center">
+        <div class="container mx-auto">
+            <p class="text-sm text-gray-500">&copy; 2025 Project Alpha. All rights reserved. An example page.</p>
+            </div>
+    </footer>
+
+    <script>
+        const scrollElements = document.querySelectorAll('.animate-on-scroll');
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add('is-visible');
+        };
+
+        const hideScrollElement = (element) => {
+             element.classList.remove('is-visible');
+        }
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) { // Trigger slightly before element is fully in view
+                    displayScrollElement(el);
+                }
+                // Optional: uncomment below to reset animation when scrolling up
+                // else {
+                //     hideScrollElement(el);
+                // }
+            })
+        }
+
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+        // Initial check in case elements are already in view
+        handleScrollAnimation();
+
+        // Note: Parallax and Magnetic button effects would require more complex JS libraries or custom code.
+        // Example Parallax (Conceptual)
+        // window.addEventListener('scroll', () => {
+        //     const parallaxElements = document.querySelectorAll('[data-parallax-speed]');
+        //     parallaxElements.forEach(el => {
+        //         const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.5;
+        //         const yOffset = window.pageYOffset;
+        //         el.style.transform = `translateY(${yOffset * speed * -0.1}px)`; // Adjust multiplier for desired effect
+        //     });
+        // });
+
+    </script>
+
+</body>
+</html>
