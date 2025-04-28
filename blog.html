@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nilobyte Blog - Design & Tech Insights</title>
+    <meta name="description" content="Showcasing modern design, development techniques, and automation insights from Nilobyte.">
+    <link rel="canonical" href="https://nilobyte.com/blog"> <link rel="icon" href="./assets/favicon.webp" type="image/webp">
+    <link rel="stylesheet" href="./assets/css/styles.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHHMJFB8C0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RHHMJFB8C0');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Your Tailwind config from index.html
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter var', 'system-ui', '-apple-system', 'sans-serif'],
+              display: ['Poppins', 'system-ui', '-apple-system', 'sans-serif']
+            },
+            // Add any custom animations/keyframes if needed
+          }
+        }
+      }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      /* Example: Add subtle gradient border effect to cards on hover */
+      .blog-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1.5rem; /* Match card rounding */
+        padding: 1px; /* Border thickness */
+        background: linear-gradient(45deg, var(--tw-gradient-stops)); /* Use Tailwind gradient classes */
+        -webkit-mask:
+           linear-gradient(#fff 0 0) content-box,
+           linear-gradient(#fff 0 0);
+        mask:
+           linear-gradient(#fff 0 0) content-box,
+           linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none; /* Allow clicks on card content */
+      }
+      .blog-card:hover::before {
+        opacity: 1;
+      }
+    </style>
+
+</head>
+
+<body class="dark:bg-gray-900 dark:text-gray-100 bg-gray-100 text-gray-900 transition-colors duration-300 font-sans">
+
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-3 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-lg hover:scale-105 transition-transform">
+         <svg class="w-6 h-6 dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+         <svg class="w-6 h-6 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+    </button>
+    <button class="home-cta" onclick="location.href='index.html'" aria-label="Back to Home" title="Back to Home">
+      <i class="fas fa-home text-xl text-white"></i>
+    </button>
+
+    <nav class="absolute top-0 left-0 right-0 z-30 p-6">
+       <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-display font-bold text-2xl text-white dark:text-gray-100">
+                N<span class="text-blue-400">.</span>
+            </a>
+            <div class="hidden md:flex space-x-6 text-sm uppercase tracking-wider">
+                <a href="/blog" class="text-white/90 hover:text-white font-semibold border-b-2 border-blue-400 pb-1">Blog</a>
+                <a href="webdesigns.html" class="text-white/70 hover:text-white transition-colors pb-1">Web Designs</a>
+                <a href="templates.html" class="text-white/70 hover:text-white transition-colors pb-1">Emails</a>
+                <a href="#contact" class="text-white/70 hover:text-white transition-colors pb-1">Contact</a>
+            </div>
+       </div>
+    </nav>
+
+    <section class="relative h-[70vh] md:h-[60vh] flex items-end text-white overflow-hidden" data-aos="fade-in">
+        <div class="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+        <div class="relative z-20 container mx-auto px-6 pb-12 md:pb-16" data-aos="fade-up" data-aos-delay="200">
+             <div class="mb-2 text-sm uppercase tracking-wider text-blue-300 font-semibold">
+                 Featured Article &bull; Web Design
+             </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4 max-w-3xl">
+                <a href="/blog/featured-post-slug.html" class="hover:text-gray-200 transition-colors">
+                    The Art of Microinteractions: Elevating UX
+                </a>
+            </h1>
+            <p class="text-lg text-gray-300 mb-4 max-w-2xl">
+                Discover how small animations and feedback loops can significantly improve user engagement and delight.
+            </p>
+            <div class="text-sm text-gray-400">
+                By Nilobyte &bull; April 28, 2025 &bull; 5 min read
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-3xl md:text-4xl font-bold font-display mb-12 text-center dark:text-white text-gray-900" data-aos="fade-up">
+            Latest Articles
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+
+            <article class="blog-card relative group bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700/50 overflow-hidden transition-all duration-300 hover:shadow-xl from-purple-500 to-blue-500 dark:from-purple-600 dark:to-blue-600" data-aos="fade-up">
+                <a href="/blog/post-slug-1.html" class="block aspect-video overflow-hidden">
+                    <img src="https://via.placeholder.com/600x338/34D399/FFFFFF?text=Post+Image+1" alt="Post Title 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400 ease-in-out">
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <span class="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Web Design</span>
+                    </div>
+                    <h3 class="text-xl font-semibold font-display mb-3 text-gray-900 dark:text-white">
+                        <a href="/blog/post-slug-1.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            10 Tailwind CSS Tricks You Didn't Know
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3 flex-grow">
+                        Unlock hidden potential in Tailwind CSS with these advanced utility combinations and configuration tips for cleaner, faster development.
+                    </p>
+                    <div class="mt-auto text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+                         <span><i class="far fa-calendar-alt mr-1"></i> April 27, 2025</span> &bull; <span><i class="far fa-clock mr-1"></i> 6 min read</span>
+                    </div>
+                </div>
+            </article>
+            <article class="blog-card relative group bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700/50 overflow-hidden transition-all duration-300 hover:shadow-xl from-green-500 to-teal-500 dark:from-green-600 dark:to-teal-600" data-aos="fade-up" data-aos-delay="100">
+                 <a href="/blog/post-slug-2.html" class="block aspect-video overflow-hidden">
+                    <img src="https://via.placeholder.com/600x338/FBBF24/FFFFFF?text=Post+Image+2" alt="Post Title 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400 ease-in-out">
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                     <div class="mb-3">
+                        <span class="inline-block bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Automation</span>
+                    </div>
+                    <h3 class="text-xl font-semibold font-display mb-3 text-gray-900 dark:text-white">
+                        <a href="/blog/post-slug-2.html" class="hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                           My Favorite Python Automation Scripts
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3 flex-grow">
+                        A walkthrough of practical Python scripts for automating file organization, data scraping, and report generation.
+                    </p>
+                     <div class="mt-auto text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+                         <span><i class="far fa-calendar-alt mr-1"></i> April 26, 2025</span> &bull; <span><i class="far fa-clock mr-1"></i> 8 min read</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card relative group bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700/50 overflow-hidden transition-all duration-300 hover:shadow-xl from-pink-500 to-red-500 dark:from-pink-600 dark:to-red-600" data-aos="fade-up" data-aos-delay="200">
+                <a href="/blog/post-slug-3.html" class="block aspect-video overflow-hidden">
+                    <img src="https://via.placeholder.com/600x338/EC4899/FFFFFF?text=Post+Image+3" alt="Post Title 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400 ease-in-out">
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="mb-3">
+                        <span class="inline-block bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Email Marketing</span>
+                    </div>
+                    <h3 class="text-xl font-semibold font-display mb-3 text-gray-900 dark:text-white">
+                        <a href="/blog/post-slug-3.html" class="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
+                            Dark Mode in HTML Emails: A Survival Guide
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3 flex-grow">
+                        Navigate the complexities of designing emails that look stunning in both light and dark modes across various clients.
+                    </p>
+                    <div class="mt-auto text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+                         <span><i class="far fa-calendar-alt mr-1"></i> April 25, 2025</span> &bull; <span><i class="far fa-clock mr-1"></i> 7 min read</span>
+                    </div>
+                </div>
+            </article>
+
+            </div>
+
+        <div class="text-center mt-16" data-aos="fade-up">
+            <button class="px-8 py-3 border-2 border-blue-500 text-blue-500 rounded-full hover:bg-blue-500 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-colors font-semibold">
+                Load More Posts
+            </button>
+            </div>
+    </main>
+
+    <footer id="contact" class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 py-16">
+             <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold font-display mb-6 text-gray-900 dark:text-white" data-aos="fade-up">Let's Build Something Amazing</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="100">
+                    Have a project in mind? Let's make it reality
+                </p>
+                <div class="max-w-2xl mx-auto space-y-4 mb-8" data-aos="fade-up">
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Choose your preferred method:
+                    </p>
+                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                         <a href="mailto:hello.nilobyte@gmail.com" class="group relative p-6 bg-white dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 overflow-hidden transition-shadow hover:shadow-xl"> <div class="absolute inset-0 bg-gradient-to-br from-purple-300 to-blue-300 opacity-0 group-hover:opacity-20 transition-opacity rounded-2xl pointer-events-none"></div> <div class="relative z-10 flex flex-col items-center"> <div class="text-3xl mb-2">📬</div> <p class="font-medium mb-1 text-gray-900 dark:text-white">Email Directly</p> <p class="text-sm text-gray-500 dark:text-gray-400">24 h response time</p> </div> </a>
+                         <a href="https://www.fiverr.com/s/ak8BLpQ" target="_blank" rel="noopener noreferrer" class="group relative p-6 bg-white dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 overflow-hidden transition-shadow hover:shadow-xl"> <div class="absolute inset-0 bg-gradient-to-br from-green-300 to-green-500 opacity-0 group-hover:opacity-20 transition-opacity rounded-2xl pointer-events-none"></div> <div class="relative z-10 flex flex-col items-center"> <div class="text-3xl mb-2">🛒</div> <p class="font-medium mb-1 text-gray-900 dark:text-white">Order via Fiverr</p> <p class="text-sm text-gray-500 dark:text-gray-400">Protected payments</p> </div> </a>
+                         <a href="https://www.nilobyte.com/booking" target="_blank" rel="noopener noreferrer" class="group relative p-6 bg-white dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 overflow-hidden transition-shadow hover:shadow-xl"> <div class="absolute inset-0 bg-gradient-to-br from-blue-300 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity rounded-2xl pointer-events-none"></div> <div class="relative z-10 flex flex-col items-center"> <div class="text-3xl mb-2">📅</div> <p class="font-medium mb-1 text-gray-900 dark:text-white">Get Free Audit</p> <p class="text-sm text-gray-500 dark:text-gray-400">Brainstorming Session</p> </div> </a>
+                     </div>
+                 </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+               <div class="mb-8 md:mb-0 text-center md:text-left">
+                   <img src="./assets/logo.webp" alt="Nilobyte Logo" class="h-12 w-12 mb-4 mx-auto md:mx-0">
+                   <p class="text-gray-600 dark:text-gray-400">Digital Solutions Architect</p>
+               </div>
+               <div class="flex space-x-6 mb-8 md:mb-0" data-aos="fade-up" data-aos-delay="100">
+                    <a href="https://twitter.com/nilobytehq" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-md hover:shadow-lg transition-shadow text-gray-600 dark:text-gray-300 hover:text-blue-400"> <i class="fab fa-twitter"></i> <span class="sr-only">Twitter</span> </a>
+                    <a href="https://instagram.com/nilobytehq" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-md hover:shadow-lg transition-shadow text-gray-600 dark:text-gray-300 hover:text-pink-500"> <i class="fab fa-instagram"></i> <span class="sr-only">Instagram</span> </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-md hover:shadow-lg transition-shadow text-gray-600 dark:text-gray-300 hover:text-red-600"> <i class="fab fa-youtube"></i> <span class="sr-only">YouTube</span> </a>
+                    <a href="https://tiktok.com/@nilobyte" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-md hover:shadow-lg transition-shadow text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"> <i class="fab fa-tiktok"></i> <span class="sr-only">TikTok</span> </a>
+                    <a href="https://linkedin.com/in/nilobyte" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-3 rounded-full bg-white dark:bg-gray-700 shadow-md hover:shadow-lg transition-shadow text-gray-600 dark:text-gray-300 hover:text-blue-600"> <i class="fab fa-linkedin"></i> <span class="sr-only">LinkedIn</span> </a>
+               </div>
+            </div>
+            <div class="mt-12 text-center text-sm text-gray-600 dark:text-gray-400">
+                <p>© 2025 Nilobyte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./assets/js/main.js" defer></script> <script>
+      AOS.init({ once: true, duration: 800 });
+      // Theme toggle and other JS from main.js will be loaded
+    </script>
+</body>
+</html>
