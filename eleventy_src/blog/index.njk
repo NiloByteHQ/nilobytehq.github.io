@@ -1,0 +1,115 @@
+---
+title: "Nilobyte Blog Archive"
+description: "All articles and insights from Nilobyte."
+layout: "blog_base.njk"
+permalink: /blog/index.html
+---
+
+{# Featured Article Section - Replicated from blog.html #}
+{# You might want to make this dynamic later, pulling the actual latest post #}
+<section class="relative h-[70vh] md:h-[60vh] flex items-end text-white overflow-hidden" data-aos="fade-in">
+    {# Keep your background image div here #}
+    <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1920x1080/4A5568/FFFFFF?text=Featured+Image');">
+    </div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+    <div class="relative z-20 container mx-auto px-6 pb-12 md:pb-16" data-aos="fade-up" data-aos-delay="200">
+        {# Check if there are any posts before trying to access the last one #}
+        {% set latestPost = collections.post | last %}
+        {% if latestPost %}
+            <div class="mb-2 text-sm uppercase tracking-wider text-blue-300 font-semibold">
+                Featured Article
+                {# Display first tag (other than 'post') as category #}
+                {% set categoryDisplayed = false %} {# Flag variable #}
+                {% for tag in latestPost.data.tags %}
+                    {% if tag != "post" and not categoryDisplayed %}
+                        &bull; <span class="capitalize">{{ tag }}</span>
+                        {% set categoryDisplayed = true %} {# Set flag after displaying #}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4 max-w-3xl">
+                {# Corrected href and title access #}
+                <a href="{{ latestPost.url | url }}" class="hover:text-gray-200 transition-colors">
+                    {{ latestPost.data.title or "Featured Post Title" }}
+                </a>
+            </h1>
+            {# Corrected description access #}
+            {% if latestPost.data.description %}
+            <p class="text-lg text-gray-300 mb-4 max-w-2xl">
+                {{ latestPost.data.description }}
+            </p>
+            {% endif %}
+            <div class="text-sm text-gray-400">
+                By Nilobyte &bull;
+                {# Corrected date access - requires readableDate filter in .eleventy.js #}
+                <time datetime="{{ latestPost.date | htmlDateString }}">{{ latestPost.date | readableDate }}</time>
+                {# Add reading time later if needed #}
+                {# &bull; 5 min read #}
+            </div>
+        {% else %}
+             <p>No posts yet!</p> {# Fallback if no posts exist #}
+        {% endif %}
+    </div>
+</section>
+
+{# Main Content Area - Replicated from blog.html #}
+<main class="container mx-auto px-4 py-16 md:py-24">
+    <h2 class="text-3xl md:text-4xl font-bold font-display mb-12 text-center dark:text-white text-gray-900" data-aos="fade-up">
+        Latest Articles
+    </h2>
+
+    {# Eleventy Loop for Blog Posts #}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+
+      {# Loop through items tagged 'post' in reverse chronological order #}
+      {%- for post in collections.post | reverse -%}
+        <article class="blog-card relative group bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700/50 overflow-hidden transition-all duration-300 hover:shadow-xl from-purple-500 to-blue-500 dark:from-purple-600 dark:to-blue-600" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}"> {# Staggered animation delay #}
+            {# Link to the generated post URL #}
+            <a href="{{ post.url | url }}" class="block aspect-video overflow-hidden">
+                {# Use post image from front matter if available, else placeholder #}
+                <img src="{{ post.data.image or 'https://via.placeholder.com/600x338/cccccc/FFFFFF?text=Post+Image' }}" alt="{{ post.data.imageAlt or post.data.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400 ease-in-out">
+            </a>
+            <div class="p-6 flex flex-col flex-grow">
+                {# Display categories/tags from front matter if available #}
+                <div class="mb-3">
+                    {% if post.data.tags %}
+                        {% for tag in post.data.tags %}
+                            {% if tag != "post" %} {# Don't display the internal 'post' tag #}
+                            <span class="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-1 capitalize">{{ tag }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                         <span class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Article</span>
+                    {% endif %}
+                </div>
+                <h3 class="text-xl font-semibold font-display mb-3 text-gray-900 dark:text-white">
+                    <a href="{{ post.url | url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      {{ post.data.title }} {# Post Title #}
+                    </a>
+                </h3>
+                {# Display excerpt from front matter if available #}
+                {% if post.data.excerpt %}
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3 flex-grow">
+                    {{ post.data.excerpt }}
+                </p>
+                {% endif %}
+                {# Post meta data #}
+                <div class="mt-auto text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+                     {# Use date filters (need to be added to .eleventy.js) #}
+                     <span><i class="far fa-calendar-alt mr-1"></i> {{ post.date | readableDate }}</span>
+                     {# Add reading time if calculated/available #}
+                     {# &bull; <span><i class="far fa-clock mr-1"></i> X min read</span> #}
+                </div>
+            </div>
+        </article>
+      {%- endfor -%}
+
+    </div> {# End Grid #}
+
+    {# Load More Button - Functionality needs JS or pagination logic #}
+    <div class="text-center mt-16" data-aos="fade-up">
+        <button class="px-8 py-3 border-2 border-blue-500 text-blue-500 rounded-full hover:bg-blue-500 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-colors font-semibold">
+            Load More Posts
+        </button>
+    </div>
+</main>

@@ -1,0 +1,192 @@
+.skip-link {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 0.25rem;
+  }
+  
+  .social-link:focus,
+  button:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .hero-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+
+  /* Glassy Home CTA */
+.home-cta {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 50;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .home-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: -2px;
+    background: linear-gradient(
+      45deg,
+      #6b46c1,
+      #4299e1,
+      #38a169,
+      #d53f8c,
+      #6b46c1
+    );
+    background-size: 400% 400%;
+    border-radius: inherit;
+    filter: blur(4px);
+    animation: rotate-border 6s linear infinite;
+    z-index: -2;
+  }
+  
+  .home-cta::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(6px);
+    border-radius: inherit;
+    z-index: -1;
+  }
+  
+  @keyframes rotate-border {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Ripple effect */
+  .home-cta .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: rgba(255,255,255,0.4);
+    animation: ripple 0.6s linear;
+  }
+  
+  @keyframes ripple {
+    to {
+      opacity: 0;
+      transform: scale(4);
+    }
+  }
+  
+  /* SwiperJS Custom Styles for Arrows and Pagination */
+.email-template-swiper {
+  /* Add some padding if arrows feel too close to edge */
+  /* padding-left: 40px; */
+  /* padding-right: 40px; */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #4F46E5; /* Indigo-600 */
+  transition: color 0.3s ease, transform 0.2s ease;
+  width: 30px; /* Standard Swiper size, adjust if needed */
+  height: 30px; /* Standard Swiper size, adjust if needed */
+  z-index: 10; /* Ensure arrows are above slides */
+  /* Optional: Add a subtle background for better visibility */
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  /* border-radius: 50%; */
+  /* padding: 5px; */
+  /* width: 40px; */
+  /* height: 40px; */
+}
+.dark .swiper-button-next,
+.dark .swiper-button-prev {
+   color: #818CF8; /* Indigo-400 */
+   /* Optional: Dark mode background */
+   /* background-color: rgba(31, 41, 55, 0.5); */ /* Gray-800 with opacity */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #3B82F6; /* Blue-500 */
+    transform: scale(1.1); /* Add slight scale on hover */
+}
+.dark .swiper-button-next:hover,
+.dark .swiper-button-prev:hover {
+   color: #60A5FA; /* Blue-400 */
+}
+
+/* Adjust arrow position slightly if needed */
+/* Default is usually fine, but you can override */
+/* .swiper-button-prev { left: 10px; } */
+/* .swiper-button-next { right: 10px; } */
+
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.5rem; /* Adjust size */
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  background-color: #9CA3AF; /* Gray-400 */
+  opacity: 0.6;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.2s ease;
+  width: 10px; /* Slightly larger bullets */
+  height: 10px;
+}
+.swiper-pagination-bullet:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #4F46E5; /* Indigo-600 */
+  opacity: 1;
+  transform: scale(1.1); /* Emphasize active bullet */
+}
+ .dark .swiper-pagination-bullet {
+    background-color: #6B7280; /* Gray-500 */
+ }
+.dark .swiper-pagination-bullet-active {
+    background-color: #818CF8; /* Indigo-400 */
+}
+
+/* Styles for Coverflow Effect (if used) */
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  background-image: none !important; /* Often improves look */
+}
+
+/* Style for the enhanced feature cards */
+.feature-card {
+    @apply bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    /* Using Tailwind's @apply to group utilities - requires build step if not using CDN Play */
+    /* If not using a build step, just apply these classes directly in the HTML */
+}
+.feature-card-icon {
+     @apply flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mr-4;
+     /* Similar utility grouping */
+}

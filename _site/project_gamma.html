@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gamma - Creative Portfolio Example</title>
+    <meta name="description" content="Example creative portfolio (Project Gamma), showcasing a bold, dynamic design style that pops.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHHMJFB8C0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RHHMJFB8C0');
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Vibrant Color Scheme */
+            --color-primary: #FF3B30;  /* Hot Red/Orange */
+            --color-secondary: #007AFF; /* Bright Blue */
+            --color-accent: #FFCC00;   /* Bright Yellow */
+            --color-bg: #FFFFFF;      /* Clean White */
+            --color-text: #1c1c1e;    /* Near Black */
+            --color-bg-dark: #1c1c1e; /* Optional Dark Mode */
+            --color-text-dark: #FFFFFF;
+
+            --font-heading: 'Bebas Neue', cursive;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* Apply base styles */
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll issues */
+        }
+
+        /* Custom Cursor (Conceptual - requires JS) */
+        /* body { cursor: none; } */
+        /* .custom-cursor { ... styles for custom cursor ... } */
+
+        /* --- Hero Section --- */
+        .hero-creative {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-text-bg {
+            font-family: var(--font-heading);
+            font-size: clamp(5rem, 25vw, 20rem); /* Massive text */
+            line-height: 0.9;
+            color: var(--color-primary);
+            opacity: 0.1; /* Make it very subtle background text */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            /* Animation example */
+            /* animation: text-flicker 5s infinite alternate; */
+        }
+        /* @keyframes text-flicker { ... } */
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text);
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+        }
+        .cta-button-pop {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-bg);
+            padding: 0.8rem 2.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.2s ease;
+             box-shadow: 4px 4px 0px 0px var(--color-secondary); /* Hard shadow */
+             border: 2px solid var(--color-text);
+        }
+        .cta-button-pop:hover {
+            transform: translate(-4px, -4px);
+            background-color: var(--color-secondary);
+            box-shadow: 8px 8px 0px 0px var(--color-primary);
+        }
+
+        /* --- Portfolio Grid --- */
+        .portfolio-grid {
+            display: grid;
+            /* Example: Masonry-like grid (adjust columns and gap) */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; /* Use Tailwind gap-6 */
+            padding: 5rem 1.5rem; /* Use Tailwind p-6 py-20 */
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background-color: var(--color-text); /* BG for image loading */
+            aspect-ratio: 3 / 4; /* Example aspect ratio */
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+             border: 3px solid var(--color-text);
+        }
+        .portfolio-item:hover {
+            transform: scale(0.95); /* Scale down slightly on hover */
+             z-index: 10; /* Bring to front */
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.3s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(80%) contrast(1.1); /* Example filter effect */
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: var(--color-accent);
+            mix-blend-mode: multiply; /* Experiment with blend modes */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .portfolio-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-text);
+            line-height: 1.1;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.5s 0.1s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s 0.1s ease;
+        }
+         .portfolio-item:hover .portfolio-title {
+            transform: translateY(0);
+            opacity: 1;
+         }
+
+        /* --- Horizontal Scroll Section (Conceptual) --- */
+        .horizontal-scroll-wrapper {
+            /* Needs JS or complex CSS for actual horizontal scroll */
+            padding: 5rem 0;
+            overflow: hidden; /* Hide default scrollbar */
+            background-color: var(--color-secondary); /* Contrasting background */
+            color: var(--color-bg);
+        }
+        .horizontal-scroll-content {
+             display: flex;
+             /* Width wider than viewport - set dynamically with JS */
+             /* width: 300%; */
+             /* animation: horizontal-scroll 20s linear infinite; */
+             gap: 2rem; /* Use Tailwind gap-8 */
+             padding: 0 1.5rem; /* Use Tailwind px-6 */
+        }
+         /* @keyframes horizontal-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } } */
+        .horizontal-item {
+            flex-shrink: 0;
+            width: 60vw; /* Example width */
+            max-width: 500px;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            padding: 2rem; /* Use Tailwind p-8 */
+             border: 3px solid var(--color-text);
+             box-shadow: 6px 6px 0 0 var(--color-primary);
+        }
+         .horizontal-item h3 { font-family: var(--font-heading); font-size: 2rem; }
+
+        /* --- Utility --- */
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 10vw, 6rem);
+            text-align: center;
+            margin-bottom: 3rem; /* Tailwind mb-12 */
+            letter-spacing: 1px;
+        }
+
+        /* Minimal Footer */
+        footer {
+            padding: 2rem 1.5rem; /* Use Tailwind p-6 py-8 */
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            opacity: 0.7;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-creative">
+        <div class="hero-text-bg" aria-hidden="true">CREATE</div>
+        <div class="hero-content px-4">
+            <h1 class="hero-title">Jane Doe</h1>
+            <p class="hero-subtitle">Multidisciplinary Designer & Visual Artist.<br>Crafting bold experiences that resonate.</p>
+            <a href="#portfolio" class="cta-button-pop">View Work</a>
+        </div>
+        </section>
+
+    <section id="portfolio">
+        <h2 class="section-heading pt-20">Selected Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" style="aspect-ratio: 1 / 1;"> <img src="assets\images\gamma1.webp" alt="Project Title 1" loading="lazy">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Kinetic Branding</h3>
+                </div>
+            </div>
+            <div class="portfolio-item" style="aspect-ratio: 3 / 4;">
+                <img src="assets\images\gamma2.webp" alt="Project Title 2" loading="lazy">
+                 <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Data Sculpture</h3>
+                </div>
+            </div>
+            <div class="portfolio-item" style="aspect-ratio: 16 / 9;"> <img src="assets\images\gamma3.webp" alt="Project Title 3" loading="lazy">
+                 <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">WebXR Gallery</h3>
+                </div>
+            </div>
+            <div class="portfolio-item" style="aspect-ratio: 3 / 4;">
+                <img src="assets\images\gamma4.webp" alt="Project Title 4" loading="lazy">
+                 <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Generative Patterns</h3>
+                </div>
+            </div>
+             <div class="portfolio-item" style="aspect-ratio: 1 / 1;">
+                <img src="assets\images\gamma5.webp" alt="Project Title 5" loading="lazy">
+                 <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Editorial Design</h3>
+                </div>
+            </div>
+             <div class="portfolio-item" style="aspect-ratio: 3 / 4;">
+                <img src="assets\images\gamma6.webp" alt="Project Title 6" loading="lazy">
+                 <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Augmented Reality App</h3>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <section class="horizontal-scroll-wrapper">
+         <h2 class="section-heading text-white pb-12">Experiments</h2>
+        <div class="horizontal-scroll-content">
+            <div class="horizontal-item">
+                <h3>Motion Study 01</h3>
+                <p>Exploring fluid dynamics with code.</p>
+                <img src="assets\images\gamma7.webp" alt="Motion Study" class="mt-4 w-full h-auto">
+            </div>
+             <div class="horizontal-item">
+                <h3>Typographic Tests</h3>
+                <p>Variable fonts in action.</p>
+                 <img src="assets\images\gamma8.webp" alt="Typography Test" class="mt-4 w-full h-auto">
+            </div>
+             <div class="horizontal-item">
+                <h3>Shader Experiments</h3>
+                <p>Playing with WebGL shaders.</p>
+                 <img src="assets\images\gamma9.webp" alt="Shader Experiment" class="mt-4 w-full h-auto">
+            </div>
+            </div>
+    </section>
+
+    <footer>
+        Jane Doe &copy; 2025 | <a href="mailto:hello@janedoe.example" class="hover:text-primary-accent">hello@janedoe.example</a>
+        </footer>
+
+    <script>
+        // Basic JS could handle:
+        // - Custom cursor logic
+        // - Triggering animations on scroll more precisely (Intersection Observer)
+        // - Implementing the horizontal scroll interaction
+        // - Masonry layout if CSS Grid isn't sufficient
+
+        // Example: Add subtle mouse move effect to hero text (conceptual)
+        const heroText = document.querySelector('.hero-text-bg');
+        // document.addEventListener('mousemove', (e) => {
+        //    if (!heroText) return;
+        //    const { clientX, clientY } = e;
+        //    const moveX = (clientX / window.innerWidth - 0.5) * -30; // Adjust multiplier
+        //    const moveY = (clientY / window.innerHeight - 0.5) * -30;
+        //    heroText.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+        // });
+
+    </script>
+
+</body>
+</html>
