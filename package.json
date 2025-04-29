@@ -2,15 +2,6 @@
   "name": "nilobyte.github.io",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./src_css/styles.css -o ./assets/css/styles.css --minify",
-    "watch:css": "tailwindcss -i ./src_css/styles.css -o ./assets/css/styles.css --watch",
-    "build:11ty": "npx @11ty/eleventy",
-    "watch:11ty": "npx @11ty/eleventy --serve --quiet",
-    "start": "npm run build:css && npm-run-all --parallel watch:*",
-    "build": "npm run build:css && npm run build:11ty"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
