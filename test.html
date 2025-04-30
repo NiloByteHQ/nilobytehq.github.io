@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nilobyte Reel Showcase Scroll (Interactive Carousel)</title>
+    <title>Nilobyte Reel Showcase Scroll (Eager Load)</title>
     <meta name="robots" content="noindex, nofollow"> <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +26,7 @@
                           '0%, 100%': { transform: 'translateY(-8px)' },
                           '50%': { transform: 'translateY(8px)' }
                         },
-                        bounce: {
+                        bounce: { // Standard bounce keyframe
                           '0%, 100%': {
                             transform: 'translateY(-25%)',
                             animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
@@ -36,7 +36,7 @@
                             animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
                           }
                         },
-                        spin: {
+                        spin: { // Standard spin keyframe
                            'from': { transform: 'rotate(0deg)' },
                            'to': { transform: 'rotate(360deg)' },
                         },
@@ -84,18 +84,18 @@
         /* Carousel Styling */
         .project-carousel-container {
             width: 90%;
-            max-width: 800px; /* Adjust as needed */
+            max-width: 800px;
             margin: 2rem auto 1rem;
-            position: relative; /* Needed for Swiper arrows/pagination */
+            position: relative;
         }
         .swiper-slide iframe {
             width: 100%;
-            height: 60vh; /* Adjust height */
-            border: 1px solid #4b5563; /* gray-600 */
-            border-radius: 0.75rem; /* rounded-xl */
-            background-color: #374151; /* gray-700 - BG while iframe loads */
+            height: 60vh;
+            border: 1px solid #4b5563;
+            border-radius: 0.75rem;
+            background-color: #374151; /* BG while iframe loads */
         }
-         /* Swiper Button Styling (using styles from your templates.html for consistency) */
+         /* Swiper Button Styling */
         .swiper-button-next,
         .swiper-button-prev {
           color: #818CF8; /* Indigo-400 */
@@ -105,36 +105,29 @@
           border-radius: 50%;
           padding: 5px;
           width: 40px; height: 40px;
-          top: 50%; /* Center vertically */
+          top: 50%;
         }
         .swiper-button-next:hover,
         .swiper-button-prev:hover {
            color: #60A5FA; /* Blue-400 */
-           transform: translateY(-50%) scale(1.1); /* Adjust transform */
+           transform: translateY(-50%) scale(1.1);
         }
         .swiper-button-next::after,
         .swiper-button-prev::after {
-          font-size: 1.2rem; /* Adjust size */
-          font-weight: bold;
+          font-size: 1.2rem; font-weight: bold;
         }
-        /* Position arrows outside the iframe area if possible */
         .swiper-button-prev { left: -10px; }
         .swiper-button-next { right: -10px; }
 
         .swiper-pagination-bullet {
-            background-color: #6B7280; /* Gray-500 */
-            opacity: 0.6; transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.2s ease;
+            background-color: #6B7280; opacity: 0.6; transition: all 0.3s ease;
             width: 10px; height: 10px;
         }
         .swiper-pagination-bullet:hover { transform: scale(1.2); opacity: 0.8; }
-        .swiper-pagination-bullet-active { background-color: #818CF8; /* Indigo-400 */ opacity: 1; transform: scale(1.1); }
+        .swiper-pagination-bullet-active { background-color: #818CF8; opacity: 1; transform: scale(1.1); }
          .swiper-pagination {
-            position: relative; /* Position below carousel */
-            bottom: -5px; /* Adjust spacing */
-            margin-top: 1rem;
+            position: relative; bottom: -5px; margin-top: 1rem;
          }
-
-
     </style>
 </head>
 <body class="dark">
@@ -204,22 +197,22 @@
             <div class="swiper project-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <iframe src="project_alpha.html" title="Project Alpha Showcase" loading="lazy"></iframe>
+                        <iframe src="project_alpha.html" title="Project Alpha Showcase" ></iframe>
                     </div>
                     <div class="swiper-slide">
-                         <iframe src="project_beta.html" title="Project Beta Showcase" loading="lazy"></iframe>
+                         <iframe src="project_beta.html" title="Project Beta Showcase" ></iframe>
                      </div>
                      <div class="swiper-slide">
-                         <iframe src="project_gamma.html" title="Project Gamma Showcase" loading="lazy"></iframe>
+                         <iframe src="project_gamma.html" title="Project Gamma Showcase" ></iframe>
                      </div>
                      <div class="swiper-slide">
-                          <iframe src="project_delta.html" title="Project Delta Showcase" loading="lazy"></iframe>
+                          <iframe src="project_delta.html" title="Project Delta Showcase" ></iframe>
                       </div>
                       <div class="swiper-slide">
-                          <iframe src="project_epsilon.html" title="Project Epsilon Showcase" loading="lazy"></iframe>
+                          <iframe src="project_epsilon.html" title="Project Epsilon Showcase" ></iframe>
                       </div>
                       <div class="swiper-slide">
-                          <iframe src="project_zeta.html" title="Project Zeta Showcase" loading="lazy"></iframe>
+                          <iframe src="project_zeta.html" title="Project Zeta Showcase" ></iframe>
                       </div>
                 </div>
                 <div class="swiper-button-prev"></div>
@@ -231,7 +224,7 @@
          <a href="inquiry.html" class="mt-4 inline-block px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold text-white transition shadow-lg">
              Let's Build It!
          </a>
-         </div>
+    </div>
 
     <footer id="contact" class="py-12 text-center bg-gray-900 border-t border-gray-800">
         <p class="text-gray-400">Nilobyte © 2025</p>
@@ -242,29 +235,29 @@
     <script>
       // Initialize Swiper
       const swiper = new Swiper('.project-swiper', {
-        // Optional parameters
-        loop: true, // Enable looping through projects
+        loop: true,
         grabCursor: true,
-        slidesPerView: 1, // Show one full project at a time
-        spaceBetween: 30, // Space between slides if needed
-
-        // Pagination
+        slidesPerView: 1,
+        spaceBetween: 30,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
         },
-
-        // Navigation arrows
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-
-        // Keyboard navigation
          keyboard: {
             enabled: true,
-            onlyInViewport: false, // Allow control even when carousel isn't fully focused
+            onlyInViewport: false,
          },
+         // Optional: Preload adjacent slides (might help slightly, browser dependent)
+         preloadImages: false, // Don't preload Swiper's images (we use iframes)
+         lazy: {
+             loadPrevNext: true, // Tell Swiper to trigger load events for adjacent iframe slides
+             loadPrevNextAmount: 1 // Load 1 slide before and 1 after
+         },
+         watchSlidesProgress: true, // Needed for lazy loading slides
       });
     </script>
 
