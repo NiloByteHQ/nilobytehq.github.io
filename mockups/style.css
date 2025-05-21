@@ -1,0 +1,1131 @@
+/* style.css */
+
+/* --------------------
+   Global Resets & Base Styles
+   -------------------- */
+:root {
+    --primary-color: #2c3e50; /* Dark Blue/Grey - Professional */
+    --secondary-color: #3498db; /* Bright Blue - Accent */
+    --accent-color: #e67e22; /* Warm Orange/Gold - CTA, Highlights */
+    --light-bg-color: #f8f9fa; /* Very Light Grey */
+    --text-color: #333;
+    --headings-font: 'Montserrat', sans-serif; /* Example modern sans-serif */
+    --body-font: 'Open Sans', sans-serif;   /* Example readable sans-serif */
+    --border-radius: 5px;
+    --box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    --transition-speed: 0.3s;
+    --dark-mode-bg: #1a1a1a; /* Very dark grey / black */
+    --dark-mode-surface: #2c2c2c; /* Slightly lighter dark for cards/surfaces */
+    --dark-mode-text: #e0e0e0; /* Light grey for text */
+    --dark-mode-primary-green: #2ecc71; /* Vibrant green for primary actions/accents */
+    --dark-mode-secondary-green: #27ae60; /* Darker green for secondary elements */
+    --dark-mode-border: #444;
+}
+
+/* Import Google Fonts (example) - Add to <head> or here */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--headings-font);
+    color: var(--primary-color);
+    margin-bottom: 0.75em;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+h1 { font-size: 2.8rem; margin-bottom: 0.5em;}
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover, a:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--light-bg-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-medium { margin-top: 2rem; }
+.mt-large { margin-top: 3rem; }
+
+.sr-only { /* Screen-reader only */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px; /* Hidden off-screen */
+    left: 0;
+    background: var(--accent-color);
+    color: white;
+    padding: 8px;
+    z-index: 10000; /* Ensure it's on top */
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0; /* Bring it into view on focus */
+}
+
+/* --------------------
+   Buttons
+   -------------------- */
+.btn {
+    display: inline-block;
+    padding: 0.8em 1.8em;
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: var(--headings-font);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: darken(var(--accent-color), 10%);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: darken(var(--primary-color), 10%);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.btn-small { padding: 0.6em 1.2em; font-size: 0.9rem; }
+.btn-large { padding: 1em 2.5em; font-size: 1.1rem; }
+
+
+/* --------------------
+   Header
+   -------------------- */
+.site-header {
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 60px; /* Adjust as needed */
+}
+.logo a:hover, .logo a:focus { text-decoration: none; }
+
+.main-navigation ul {
+    display: flex;
+    gap: 25px;
+}
+
+.main-navigation ul li a {
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 10px 0;
+    position: relative;
+    text-decoration: none;
+}
+.main-navigation ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed) ease;
+}
+.main-navigation ul li a:hover::after,
+.main-navigation ul li a:focus::after,
+.main-navigation ul li a.active::after { /* Add .active class with JS for current page */
+    width: 100%;
+}
+
+.header-cta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.header-cta .phone-number {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.header-cta .phone-number i {
+    margin-right: 5px;
+    color: var(--accent-color);
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* --------------------
+   Hero Section
+   -------------------- */
+.hero-section {
+    position: relative;
+    height: 85vh; /* Adjust height as needed */
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('placeholder-hero-kitchen.jpg') no-repeat center center/cover; /* Replace with high-quality image */
+    z-index: -2;
+}
+.hero-background::after { /* Overlay for text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeIn HeroContentAnimation 1s ease-out forwards;
+}
+@keyframes HeroContentAnimation {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title {
+    font-size: 3.5rem; /* Larger for hero */
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5em;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-content .btn {
+    margin: 0.5em;
+}
+
+/* --------------------
+   Section Titles
+   -------------------- */
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    font-weight: 700;
+}
+.section-title::after { /* Underline accent */
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
+}
+.section-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* --------------------
+   Feature Section (Why Choose Us)
+   -------------------- */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.feature-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+.feature-item h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* --------------------
+   Services Section
+   -------------------- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+.service-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.service-image {
+    width: 100%;
+    height: 220px; /* Fixed height for consistency */
+    object-fit: cover;
+}
+.service-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.service-content h3 {
+    margin-bottom: 15px;
+}
+.service-content p {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+.read-more-link {
+    font-weight: 600;
+    color: var(--accent-color);
+    text-decoration: none;
+    align-self: flex-start; /* Align to the bottom left of the content area */
+}
+.read-more-link i {
+    margin-left: 5px;
+    transition: transform var(--transition-speed) ease;
+}
+.read-more-link:hover i {
+    transform: translateX(5px);
+}
+
+
+/* --------------------
+   Gallery Section
+   -------------------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    display: block;
+}
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Adjust as needed */
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease-out;
+}
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+.gallery-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.7); /* var(--primary-color) with opacity */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+    text-decoration: none;
+}
+.gallery-item:hover .gallery-item-overlay,
+.gallery-item:focus .gallery-item-overlay { /* Added focus for accessibility */
+    opacity: 1;
+    text-decoration: none;
+}
+
+/* --------------------
+   Testimonials Section
+   -------------------- */
+.testimonial-slider { /* Basic styling, JS needed for actual slider functionality */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* For non-JS fallback */
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.testimonial-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border-left: 5px solid var(--accent-color);
+}
+.testimonial-item blockquote p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+.testimonial-item blockquote p::before {
+    content: '“';
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-right: 5px;
+    font-weight: bold;
+}
+.testimonial-item blockquote p::after {
+    content: '”';
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-left: 5px;
+    font-weight: bold;
+}
+.testimonial-item footer cite {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 5px;
+}
+.testimonial-rating i {
+    color: #f39c12; /* Gold color for stars */
+}
+.accreditation-logo {
+    max-width: 200px; /* Adjust as needed */
+    margin: 20px auto 0;
+}
+
+/* --------------------
+   CTA Section
+   -------------------- */
+.cta-section {
+    background-color: var(--primary-color); /* Or use an image background */
+    color: #fff;
+}
+.cta-section .section-title, .cta-section .cta-title {
+    color: #fff;
+}
+.cta-section .section-title::after {
+    background-color: var(--accent-color); /* Or #fff if on dark bg */
+}
+.cta-title { /* If not using .section-title */
+    font-size: 2rem;
+    margin-bottom: 0.75em;
+}
+.cta-text {
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    color: #f0f0f0;
+}
+
+/* --------------------
+   Areas Covered Section
+   -------------------- */
+.areas-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px; /* row-gap column-gap */
+    padding: 0;
+    margin-top: 20px;
+}
+.areas-list li {
+    background-color: #fff;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-size: 0.95rem;
+}
+
+/* --------------------
+   Contact Section
+   -------------------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-family: var(--body-font);
+    font-size: 1rem;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(var(--secondary-color-rgb), 0.2); /* Create RGB version of secondary-color if needed */
+}
+.contact-form textarea {
+    resize: vertical;
+}
+.contact-details h3 {
+    margin-bottom: 20px;
+}
+.contact-details ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+.contact-details ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: start;
+}
+.contact-details ul li i {
+    margin-right: 10px;
+    color: var(--accent-color);
+    margin-top: 4px; /* Align icon better */
+    width: 20px; /* Give icon fixed width for alignment */
+    text-align: center;
+}
+.social-links {
+    margin-top: 20px;
+}
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* --------------------
+   Footer
+   -------------------- */
+.site-footer {
+    background-color: var(--primary-color);
+    color: #e0e0e0; /* Lighter text for footer */
+    padding-top: 60px; /* Keep .section-padding for consistency if desired, or customize */
+    padding-bottom: 0; /* Copyright bar will have its own padding */
+}
+.site-footer h4 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.site-footer a {
+    color: #e0e0e0;
+}
+.site-footer a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.footer-about p, .footer-links ul li, .footer-contact p, .footer-legal ul li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+.footer-contact i {
+    margin-right: 8px;
+    color: var(--accent-color);
+}
+.copyright-bar {
+    border-top: 1px solid #4a627a; /* Darker shade of primary */
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.copyright-bar p {
+    margin-bottom: 5px;
+}
+.site-credit a {
+    font-weight: 600;
+}
+
+
+/* --------------------
+   Back to Top Button
+   -------------------- */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease, transform var(--transition-speed) ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.back-to-top:hover {
+    background-color: darken(var(--accent-color), 10%);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* --------------------
+   Responsive Design
+   -------------------- */
+@media (max-width: 992px) {
+    .hero-title { font-size: 2.8rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-details { margin-top: 40px; }
+}
+
+@media (max-width: 768px) {
+    html { font-size: 15px; }
+    .hero-section { height: 70vh; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1rem; }
+
+    .header-container { flex-wrap: wrap; }
+    .main-navigation {
+        order: 3; /* Push nav below logo and toggle */
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+    .main-navigation.active { /* Class added by JS */
+        max-height: 500px; /* Arbitrary large enough value */
+        padding: 15px 0;
+    }
+    .main-navigation ul {
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+    }
+    .main-navigation ul li {
+        width: 100%;
+        text-align: center;
+    }
+    .main-navigation ul li a {
+        display: block;
+        padding: 12px 15px;
+    }
+    .main-navigation ul li a::after { display: none; } /* Remove underline effect on mobile nav */
+
+    .menu-toggle {
+        display: block; /* Show on mobile */
+    }
+
+    .header-cta {
+        order: 2; /* To keep it to the right of the logo on one line if space allows, or adjust as needed */
+        margin-left: auto; /* Push to the right, next to toggle */
+    }
+    .header-cta .phone-number { display: none; } /* Hide phone number text, keep button */
+
+
+    .section-padding { padding: 60px 0; }
+    .section-title { font-size: 1.8rem; margin-bottom: 30px; }
+
+    .feature-grid, .services-grid, .gallery-grid, .testimonial-slider {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+    }
+    .footer-grid {
+        grid-template-columns: 1fr; /* Stack footer widgets */
+        text-align: center;
+    }
+    .footer-grid > div {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.8rem; }
+    .hero-section .btn { display: block; margin: 10px auto; width: 80%; }
+    .header-cta .btn-small { padding: 0.5em 0.8em; font-size: 0.8rem; }
+}
+
+/* --------------------
+   Dark Mode Toggle Styles
+   -------------------- */
+   .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: 15px; /* Adjust as needed */
+}
+
+.toggle-label {
+    cursor: pointer;
+    font-size: 1.2rem; /* Adjust icon size */
+    color: var(--primary-color); /* Uses light mode primary by default */
+    padding: 5px;
+    display: flex; /* To help with icon switching */
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Ensure consistent width */
+    height: 30px; /* Ensure consistent height */
+}
+
+.toggle-label .fa-sun { display: none; } /* Hide sun by default */
+.toggle-label .fa-moon { display: inline-block; } /* Show moon by default */
+
+/* Styles when dark mode is active (via body.dark-mode) */
+body.dark-mode .toggle-label .fa-sun {
+    display: inline-block; /* Show sun in dark mode */
+    color: var(--dark-mode-primary-green); /* Sun icon color in dark mode */
+}
+body.dark-mode .toggle-label .fa-moon {
+    display: none; /* Hide moon in dark mode */
+}
+
+
+/* --------------------
+   Dark Mode General Styles
+   -------------------- */
+body.dark-mode {
+    background-color: var(--dark-mode-bg);
+    color: var(--dark-mode-text);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--dark-mode-primary-green); /* Green headings */
+}
+
+body.dark-mode p {
+    color: var(--dark-mode-text);
+}
+
+body.dark-mode a {
+    color: var(--dark-mode-secondary-green);
+}
+body.dark-mode a:hover,
+body.dark-mode a:focus {
+    color: var(--dark-mode-primary-green);
+}
+
+body.dark-mode .btn-primary {
+    background-color: var(--dark-mode-primary-green);
+    color: var(--dark-mode-bg); /* Dark text on green button */
+}
+body.dark-mode .btn-primary:hover,
+body.dark-mode .btn-primary:focus {
+    background-color: darken(var(--dark-mode-primary-green), 10%);
+    color: var(--dark-mode-bg);
+}
+
+body.dark-mode .btn-secondary {
+    background-color: var(--dark-mode-secondary-green);
+    color: var(--dark-mode-bg);
+}
+body.dark-mode .btn-secondary:hover,
+body.dark-mode .btn-secondary:focus {
+    background-color: darken(var(--dark-mode-secondary-green), 10%);
+    color: var(--dark-mode-bg);
+}
+
+/* Header in Dark Mode */
+body.dark-mode .site-header {
+    background-color: var(--dark-mode-surface);
+    border-bottom: 1px solid var(--dark-mode-border);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Darker shadow */
+}
+body.dark-mode .logo img {
+    /* If you have a dark mode version of the logo, you can switch it here.
+       Otherwise, you might need to ensure the light logo has good contrast,
+       or add a subtle background/filter if it's problematic. */
+    /* Example: filter: brightness(0) invert(1); if your logo is dark */
+}
+body.dark-mode .main-navigation ul li a {
+    color: var(--dark-mode-text);
+}
+body.dark-mode .main-navigation ul li a::after {
+    background-color: var(--dark-mode-primary-green);
+}
+body.dark-mode .header-cta .phone-number {
+    color: var(--dark-mode-text);
+}
+body.dark-mode .header-cta .phone-number i {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .menu-toggle {
+    color: var(--dark-mode-primary-green);
+}
+
+/* Hero Section in Dark Mode */
+body.dark-mode .hero-background::after { /* Darken overlay less or change color */
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
+}
+body.dark-mode .hero-title {
+    color: #fff; /* Keep white or very light for contrast against dark bg */
+}
+body.dark-mode .hero-subtitle {
+    color: #e0e0e0; /* Light grey */
+}
+
+/* Section Titles in Dark Mode */
+body.dark-mode .section-title {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .section-title::after {
+    background-color: var(--dark-mode-secondary-green);
+}
+body.dark-mode .section-intro {
+    color: var(--dark-mode-text);
+}
+
+/* Feature Section (Why Choose Us) in Dark Mode */
+body.dark-mode .feature-item {
+    background-color: var(--dark-mode-surface);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Darker shadow */
+    border: 1px solid var(--dark-mode-border);
+}
+body.dark-mode .feature-item:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+body.dark-mode .feature-icon {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .feature-item h3 {
+    color: var(--dark-mode-primary-green); /* Already covered by general h3 but explicit here */
+}
+
+/* Services Section in Dark Mode */
+body.dark-mode .services-section.bg-light { /* Override bg-light */
+    background-color: var(--dark-mode-bg);
+}
+body.dark-mode .service-card {
+    background-color: var(--dark-mode-surface);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid var(--dark-mode-border);
+}
+body.dark-mode .service-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+body.dark-mode .service-content h3 {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .read-more-link {
+    color: var(--dark-mode-secondary-green);
+}
+body.dark-mode .read-more-link:hover {
+    color: var(--dark-mode-primary-green);
+}
+
+/* Gallery Section in Dark Mode */
+body.dark-mode .gallery-item-overlay {
+    background-color: rgba(46, 204, 113, 0.7); /* Primary green with opacity */
+    color: var(--dark-mode-bg); /* Dark text on green overlay */
+}
+body.dark-mode .gallery-item {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid var(--dark-mode-border);
+}
+
+
+/* Testimonials Section in Dark Mode */
+body.dark-mode .testimonials-section.bg-light { /* Override bg-light */
+    background-color: var(--dark-mode-bg);
+}
+body.dark-mode .testimonial-item {
+    background-color: var(--dark-mode-surface);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-left: 5px solid var(--dark-mode-primary-green);
+    border: 1px solid var(--dark-mode-border);
+    border-left-width: 5px; /* Ensure left border is still prominent */
+}
+body.dark-mode .testimonial-item blockquote p {
+    color: var(--dark-mode-text);
+}
+body.dark-mode .testimonial-item blockquote p::before,
+body.dark-mode .testimonial-item blockquote p::after {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .testimonial-item footer cite {
+    color: var(--dark-mode-secondary-green);
+}
+body.dark-mode .testimonial-rating i {
+    color: var(--dark-mode-primary-green); /* Green stars */
+}
+body.dark-mode .accreditation-logo {
+    /* If the logo is dark, it might need inversion or a light version for dark mode */
+    /* filter: invert(1) hue-rotate(180deg) brightness(1.5); /* Example filter */
+}
+
+
+/* CTA Section in Dark Mode */
+body.dark-mode .cta-section {
+    background-color: var(--dark-mode-secondary-green); /* Use a green for CTA bg */
+    color: var(--dark-mode-bg); /* Dark text for contrast on green bg */
+}
+body.dark-mode .cta-section .section-title,
+body.dark-mode .cta-section .cta-title {
+    color: var(--dark-mode-bg); /* Dark text for contrast */
+}
+body.dark-mode .cta-section .section-title::after {
+    background-color: var(--dark-mode-bg); /* Dark underline on green */
+}
+body.dark-mode .cta-text {
+    color: var(--dark-mode-surface); /* Lighter dark for less emphasis */
+}
+body.dark-mode .cta-section .btn-primary { /* Special override for this section if needed */
+    background-color: var(--dark-mode-bg); /* Dark button */
+    color: var(--dark-mode-primary-green); /* Green text */
+}
+body.dark-mode .cta-section .btn-primary:hover {
+    background-color: var(--dark-mode-surface);
+}
+
+
+/* Areas Covered Section in Dark Mode */
+body.dark-mode .areas-covered-section.bg-light { /* Override bg-light */
+    background-color: var(--dark-mode-bg);
+}
+body.dark-mode .areas-list li {
+    background-color: var(--dark-mode-surface);
+    color: var(--dark-mode-text);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 1px solid var(--dark-mode-border);
+}
+
+/* Contact Section in Dark Mode */
+body.dark-mode .contact-form label {
+    color: var(--dark-mode-secondary-green);
+}
+body.dark-mode .contact-form input[type="text"],
+body.dark-mode .contact-form input[type="email"],
+body.dark-mode .contact-form input[type="tel"],
+body.dark-mode .contact-form textarea {
+    background-color: var(--dark-mode-surface);
+    color: var(--dark-mode-text);
+    border: 1px solid var(--dark-mode-border);
+}
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus {
+    border-color: var(--dark-mode-primary-green);
+    box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2); /* Primary green with opacity */
+}
+body.dark-mode .contact-details h3 {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .contact-details ul li i {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .social-links a {
+    color: var(--dark-mode-secondary-green);
+}
+body.dark-mode .social-links a:hover {
+    color: var(--dark-mode-primary-green);
+}
+
+
+/* Footer in Dark Mode */
+body.dark-mode .site-footer {
+    background-color: var(--dark-mode-surface); /* Dark surface for footer */
+    color: var(--dark-mode-text);
+}
+body.dark-mode .site-footer h4 {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .site-footer a {
+    color: var(--dark-mode-secondary-green);
+}
+body.dark-mode .site-footer a:hover {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .footer-contact i {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .copyright-bar {
+    border-top: 1px solid var(--dark-mode-border);
+    color: var(--dark-mode-text);
+}
+body.dark-mode .site-credit a {
+    color: var(--dark-mode-secondary-green);
+}
+body.dark-mode .site-credit a:hover {
+    color: var(--dark-mode-primary-green);
+}
+body.dark-mode .footer-about img { /* Checkatrade logo */
+    /* filter: invert(1) hue-rotate(180deg) brightness(1.5); /* Example if it's a dark logo */
+}
+
+
+/* Back to Top Button in Dark Mode */
+body.dark-mode .back-to-top {
+    background-color: var(--dark-mode-primary-green);
+    color: var(--dark-mode-bg); /* Dark icon on green button */
+}
+body.dark-mode .back-to-top:hover {
+    background-color: darken(var(--dark-mode-primary-green), 10%);
+    color: var(--dark-mode-bg);
+}
+
+/* Skip Link in Dark Mode */
+body.dark-mode .skip-link {
+    background: var(--dark-mode-primary-green);
+    color: var(--dark-mode-bg);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* This class will initially hide elements and prepare them for animation */
+.js-prepare-animate-on-scroll {
+    opacity: 0;
+    /* transform: translateY(30px); /* You can set initial transform here if preferred */
+}
+
+/* This class will be added by JavaScript to trigger the animation */
+.js-animate-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
