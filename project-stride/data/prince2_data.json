@@ -1,0 +1,973 @@
+{
+  "courseTitle": "PRINCE2 7 Foundation",
+  "themes": [
+    {
+      "id": "th00",
+      "title": "Welcome to the Project",
+      "description": "Let's begin by understanding your goals for this course.",
+      "modules": [
+        {
+          "id": "m0001",
+          "title": "Pre-Course Questionnaire",
+          "lessons": [
+            {
+              "id": "l000101",
+              "title": "Your Expectations",
+              "content": "<p>Welcome, Project Manager! Before we begin, let's set our own project baseline. Answering these questions will help you get the most out of this training.</p><p>First, what do you expect from this course?</p>",
+              "quiz": {
+                "type": "fill-in-the-blank",
+                "question": "What is your primary expectation for this course?"
+              }
+            },
+            {
+              "id": "l000102",
+              "title": "Current Knowledge",
+              "content": "<p>How would you describe your current knowledge of the topic?</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "How would you rate your current PRINCE2 knowledge?",
+                    "options": [
+                      "Beginner: I'm completely new to this.",
+                      "Novice: I've heard of it and know some basic concepts.",
+                      "Intermediate: I have some practical experience.",
+                      "Advanced: I've used it extensively."
+                    ],
+                    "answer": null,
+                    "explanation": "There's no wrong answer! This helps set a baseline for your learning journey."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l000103",
+              "title": "Applying Your Skills",
+              "content": "<p>What do you seek to gain from this course that you will use in the workplace after training ends?</p>",
+              "quiz": {
+                "type": "fill-in-the-blank",
+                "question": "Name one skill you hope to apply at work."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th01",
+      "title": "Overview of PRINCE2",
+      "description": "Understand the fundamentals of project management and the PRINCE2 method.",
+      "modules": [
+        {
+          "id": "m0101",
+          "title": "Core Concepts",
+          "lessons": [
+            {
+              "id": "l010101",
+              "title": "What is a Project?",
+              "content": "<p>A project is a <strong>temporary organization</strong> created to deliver one or more business products according to an agreed Business Case.</p><ul><li><strong>Change:</strong> Projects are the means by which we introduce change.</li><li><strong>Temporary:</strong> They have a defined start and end.</li><li><strong>Cross-functional:</strong> They involve teams with different skills working together.</li><li><strong>Unique:</strong> Every project is different in some way.</li><li><strong>Uncertainty:</strong> They involve more risk than business-as-usual activities.</li></ul>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which is a characteristic of a project that distinguishes it from 'business as usual'?",
+                    "options": [
+                      "Projects include ongoing management of operations",
+                      "Project work is generally less risky",
+                      "Every project will be unique in some way",
+                      "Projects continue after 'business-as-usual' resumes"
+                    ],
+                    "answer": 2,
+                    "explanation": "Every project is unique. An organization may undertake many similar projects, but each one will differ in a certain way, such as having a different team, customer, or timeframe."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l010102",
+              "title": "The 7 Performance Aspects",
+              "content": "<p>PRINCE2 requires projects to be managed against seven aspects of performance to ensure success.</p><ul><li><strong>Benefits:</strong> The reason for the project.</li><li><strong>Costs:</strong> How much the project will cost.</li><li><strong>Time:</strong> When the project will be delivered.</li><li><strong>Quality:</strong> Ensuring products are fit for purpose.</li><li><strong>Scope:</strong> What the project will deliver.</li><li><strong>Sustainability:</strong> The project's environmental and social impact.</li><li><strong>Risk:</strong> The project's exposure to uncertainty.</li></ul>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which statement about the 'people' element is correct?",
+                    "options": [
+                      "It refers only to the members of the project board.",
+                      "The extent of delegation is often dependent on the level of confidence and trust in key relationships.",
+                      "It is applied by ensuring decisions are made at the most local level possible.",
+                      "It primarily focuses on the technical skills of the team members."
+                    ],
+                    "answer": 1,
+                    "explanation": "The 'manage by exception' principle is applied by the 'people' element by recognizing that 'the extent of delegation is often dependent on the level of confidence and trust that exists in the key relationships'."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l010104",
+      "title": "Fill in the Blank: Project Definition",
+      "content": "<p>Time to test your recall of the core project definition. The next screen will present a sentence with a missing word.</p>",
+      "quiz": {
+        "type": "fill-in-the-blank",
+        "question": "A project is a <strong>[BLANK]</strong> organization that is created for the purpose of delivering one or more business products according to an agreed business case.",
+        "answer": "temporary"
+      }
+    },
+    {
+      "id": "th02",
+      "title": "Principles",
+      "description": "The 7 guiding obligations and good practices that underpin the entire method.",
+      "modules": [
+        {
+          "id": "m0201",
+          "title": "The 7 Principles",
+          "lessons": [
+            {
+              "id": "l020101",
+              "title": "Ensure Continued Business Justification",
+              "content": "<p>A PRINCE2 project must have a justifiable reason for starting, and that justification must remain valid and be revalidated throughout the project's life. If it doesn't, the project should be stopped.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What does the 'ensure continued business justification' principle facilitate?",
+                    "options": [
+                      "That the PRINCE2 method is suited to the scale of investment",
+                      "That the products delivered meet quality requirements",
+                      "That the project remains desirable, viable, and achievable as it progresses",
+                      "That the project has a business stakeholder to secure funding"
+                    ],
+                    "answer": 2,
+                    "explanation": "PRINCE2 requires there must be a justifiable reason for starting a project, and the justification must remain valid and be revalidated throughout the lifecycle of the project. This ensures the project remains desirable, viable, and achievable."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l020102",
+              "title": "Learn from Experience",
+              "content": "<p>PRINCE2 project teams actively seek, record, and implement improvements from lessons learned in previous projects and throughout the current project's life.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "A project holds a workshop to share experiences of new ways of working. Which principle is being applied?",
+                    "options": [
+                      "Learn from experience",
+                      "Manage by exception",
+                      "Focus on products",
+                      "Define roles, responsibilities, and relationships"
+                    ],
+                    "answer": 0,
+                    "explanation": "This principle is being applied by recognizing that there is valuable knowledge within a project ecosystem and encouraging knowledge sharing. People factors like behaviors and culture are best learned through social learning."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l020103",
+              "title": "Define Roles, Responsibilities, & Relationships",
+              "content": "<p>A PRINCE2 project has a defined and agreed-upon structure that engages the business, user, and supplier stakeholder interests.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which statement about the 'define roles, responsibilities, and relationships' principle is CORRECT?",
+                    "options": [
+                      "An organization's day-to-day management structures are likely to be suited to control the project work",
+                      "The project board should exclude external supplier representatives",
+                      "Suppliers are stakeholders that can be external to the business",
+                      "The project management team should consist exclusively of internal stakeholders"
+                    ],
+                    "answer": 2,
+                    "explanation": "Stakeholders can be individuals or groups within or external to the business. Suppliers can come from within the organization or be external. All three stakeholder interests (business, user, supplier) need to be represented."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l020104",
+              "title": "Manage by Stages",
+              "content": "<p>A PRINCE2 project is planned, monitored, and controlled on a stage-by-stage basis, providing formal decision points for the Project Board.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which activity is performed ONLY in the 'managing a stage boundary' process?",
+                    "options": [
+                      "Preparing a replacement for the current stage plan for approval by the project board",
+                      "Constantly reviewing the business justification against the business case",
+                      "Reporting stage progress regularly to the project board",
+                      "Preparing the project for premature closure following project board direction"
+                    ],
+                    "answer": 0,
+                    "explanation": "The 'managing a stage boundary' process provides a means by which an exception procedure can be implemented, which includes preparing an exception plan to replace the current stage plan."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l020105",
+              "title": "Manage by Exception",
+              "content": "<p>A PRINCE2 project establishes limits of delegated authority (tolerances) for each level of the project (project, stage, team). If a forecast indicates these tolerances will be exceeded, the issue is escalated to the next management level for a decision.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What does the 'manage by exception' principle enable?",
+                    "options": [
+                      "The project team members to define the scope to be delivered",
+                      "The project to deliver benefits required by the business",
+                      "Decisions to be made by the right people at the right time",
+                      "The project team members to understand their contribution"
+                    ],
+                    "answer": 2,
+                    "explanation": "The 'manage by exception' principle provides for efficient use of senior management time by reducing their time burden without removing their control. This ensures decisions are made at the right level in the organization."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l020106",
+              "title": "Focus on Products",
+              "content": "<p>A PRINCE2 project focuses on the definition and delivery of products, particularly their quality requirements, to ensure they are fit for purpose.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What is the primary benefit of a product-based quality approach?",
+                    "options": [
+                      "It guarantees the project will finish on time",
+                      "It helps avoid expending resources on work not traced to the business justification",
+                      "It allows the project manager to change the scope without approval",
+                      "It reduces the need for a business case"
+                    ],
+                    "answer": 1,
+                    "explanation": "A product-based approach helps avoid expending resources on work that cannot be traced back to the project’s business justification and reduces the risk of scope being neglected or overlooked."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l020107",
+              "title": "Tailor to Suit the Project",
+              "content": "<p>A PRINCE2 project applies and tailors the method to suit the project's specific environment, size, complexity, importance, delivery method, team capability, and level of risk.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which statement about tailoring is CORRECT?",
+                    "options": [
+                      "The project manager should recommend tailoring options to the Project Board",
+                      "The 7 principles can be excluded if they are not relevant",
+                      "All management products must be produced exactly as described",
+                      "Tailoring is only necessary for very large, complex projects"
+                    ],
+                    "answer": 0,
+                    "explanation": "The project manager is responsible for tailoring and will make recommendations. The Project Board is accountable and needs to approve the recommendations. The 7 principles cannot be tailored out."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th03",
+      "title": "People",
+      "description": "Learn about the importance of people and their relationships in delivering successful projects.",
+      "modules": [
+        {
+          "id": "m0301",
+          "title": "Leading Change & Teams",
+          "lessons": [
+            {
+              "id": "l030101",
+              "title": "Leading Successful Change",
+              "content": "<p>The purpose of a project is to deliver change. <strong>Change management</strong> is the means by which an organization transitions from its current state to a target state. It requires effective leadership and engagement with stakeholders—any individual, group, or organization that can affect or be affected by the project.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What is a description of the purpose of the change management approach?",
+                    "options": [
+                      "To describe how proposals to change the project baseline should be recorded",
+                      "To describe the processes required to manage uncertainty",
+                      "To describe the standards required to deliver products that meet user expectations",
+                      "To establish the target organizational state required for the project to meet its objectives"
+                    ],
+                    "answer": 3,
+                    "explanation": "The purpose of the change management approach is 'to establish the target organizational state required for the project to meet its objectives together with the means by which the business will shift from the current state and through any interim states.'"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l030102",
+              "title": "Leading & Managing Teams",
+              "content": "<p>Projects are delivered by temporary teams, which requires a different style of leadership than established business teams.<ul><li><strong>Leadership:</strong> Motivating people to achieve objectives through collaboration, persuasion, and influence.</li><li><strong>Management:</strong> Instructing the execution of tasks in line with agreed ways of working.</li></ul><p>Co-creating ways of working with the team improves their willingness to be managed.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which of these is an aspect of leadership, rather than management?",
+                    "options": [
+                      "Instructing the execution of tasks",
+                      "Motivating people to achieve a project’s objectives",
+                      "Monitoring progress against a plan",
+                      "Applying controls to a work package"
+                    ],
+                    "answer": 1,
+                    "explanation": "Leadership is defined as 'motivating people to achieve a project’s objectives' and is best done through collaboration, while management involves instructing the execution of tasks."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l030103",
+              "title": "Effective Communication",
+              "content": "<p>Effective communication avoids misunderstandings and barriers to implementing change. The <strong>communication management approach</strong> defines the means and frequency of communication with all stakeholders. It facilitates a controlled, two-way flow of information. Communication should be adapted for co-located, remote, and hybrid teams.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "The communication management approach should focus on...",
+                    "options": [
+                      "Broadcasting information one-way from the project manager",
+                      "Using only formal, written reports for all communication",
+                      "Listening and understanding perceptions as much as broadcasting",
+                      "Communicating only at the end of a project stage"
+                    ],
+                    "answer": 2,
+                    "explanation": "The communication management approach should focus on listening and understanding perceptions and concerns as much as broadcasting to allow for tailoring of messaging and effective stakeholder engagement."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th04",
+      "title": "Organizing",
+      "description": "Defining the project's structure of accountability and responsibilities.",
+      "modules": [
+        {
+          "id": "m0401",
+          "title": "Project Organization",
+          "lessons": [
+            {
+              "id": "l040101",
+              "title": "The Project Management Team Structure",
+              "content": "<p>A PRINCE2 project has four layers of management.</p><ol><li><strong>Business Layer (Commissioning):</strong> Sits outside the project team and provides the project mandate and sets project-level tolerances.</li><li><strong>Directing:</strong> The Project Board, which is accountable for the project's success and has overall control.</li><li><strong>Managing:</strong> The Project Manager, responsible for the day-to-day management of the project.</li><li><strong>Delivering:</strong> The Team Managers and members who create the project products.</li></ol>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Who has the authority to direct the project within the remit set by the business?",
+                    "options": ["Project Manager", "Project Executive", "Project Management Team", "Project Board"],
+                    "answer": 3,
+                    "explanation": "The Project Board is defined as 'accountable to the business for the success of the project and has the authority to direct the project within the remit set by the business.'"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l040102",
+              "title": "The Three Project Interests",
+              "content": "<p>The Project Board brings together three primary stakeholder interests:</p><ul><li><strong>Business:</strong> Represented by the <strong>Project Executive</strong>, who is ultimately accountable for the project's success and the Business Case.</li><li><strong>User:</strong> Represented by the <strong>Senior User(s)</strong>, who specifies the needs of those who will use the project's products and is accountable for realizing the benefits.</li><li><strong>Supplier:</strong> Represented by the <strong>Senior Supplier(s)</strong>, who represents the interests of those designing, developing, and implementing the project products.</li></ul>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "A new department head wants to know which members of staff will be involved in the project. What should they review?",
+                    "options": [
+                      "Project Management Team Structure",
+                      "Role Descriptions",
+                      "Project Log",
+                      "Communication Management Approach"
+                    ],
+                    "answer": 0,
+                    "explanation": "The purpose of the project management team structure is to define who is involved in the project, their relationships, and how they will work together."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th05",
+      "title": "Business Case",
+      "description": "Establishing mechanisms to judge whether the project is and remains desirable, viable, and achievable.",
+      "modules": [
+        {
+          "id": "m0501",
+          "title": "Justifying the Project",
+          "lessons": [
+            {
+              "id": "l050101",
+              "title": "Outputs, Outcomes, and Benefits",
+              "content": "<p>The Business Case is built on a logical chain:</p><ol><li>The project delivers <strong>Outputs</strong> (the tangible or intangible products).</li><li>These outputs enable changes that result in <strong>Outcomes</strong>.</li><li>These outcomes create measurable improvements, which are the <strong>Benefits</strong>.</li></ol><p>An outcome that is perceived as negative is a <strong>dis-benefit</strong>.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which term is defined as the tangible or intangible deliverable of an activity?",
+                    "options": ["Output", "Outcome", "Benefit", "Plan"],
+                    "answer": 0,
+                    "explanation": "An output is defined as 'the tangible or intangible deliverable of an activity'. Management products are not considered outputs."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l050102",
+              "title": "The Business Case Lifecycle",
+              "content": "<p>The Business Case is a living document. It is developed as an <strong>outline business case</strong> during the 'Starting up a Project' process, refined into a <strong>full business case</strong> during the 'Initiating a Project' process, and is checked and maintained throughout the project, especially at stage boundaries.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "In which step of the business case management technique should the project mandate be reviewed?",
+                    "options": ["Develop", "Check", "Maintain", "Confirm"],
+                    "answer": 0,
+                    "explanation": "During the 'develop' step, 'the provision of a project mandate activates the process of ‘starting up a project’. The project mandate is then used as an input to develop the initial business justification for the project documented in the outline business case.'"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th06",
+      "title": "Plans",
+      "description": "Facilitating communication and control by defining how, when, and by whom the project's products will be delivered.",
+      "modules": [
+        {
+          "id": "m0601",
+          "title": "Planning the Project",
+          "lessons": [
+            {
+              "id": "l060101",
+              "title": "Levels of Plan",
+              "content": "<p>PRINCE2 uses three main levels of plan:</p><ul><li><strong>Project Plan:</strong> A high-level plan for the entire project, used by the Project Board.</li><li><strong>Stage Plan:</strong> A detailed plan for the current management stage, used by the Project Manager.</li><li><strong>Team Plan (Optional):</strong> A plan for executing a specific Work Package, used by a Team Manager.</li></ul><p>An <strong>Exception Plan</strong> may also be created to show how the project will recover from a forecast deviation from tolerances.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What is defined as a high-level plan showing the major products of the project?",
+                    "options": [
+                      "A project plan",
+                      "A stage plan",
+                      "A team plan",
+                      "A work package description"
+                    ],
+                    "answer": 0,
+                    "explanation": "A project plan is 'a high-level plan showing the major products of the project and when, how, and at what cost they will be delivered.'"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l060102",
+              "title": "Product-Based Planning",
+              "content": "<p>PRINCE2 uses a technique called <strong>product-based planning</strong>. This means planning starts by identifying the required products and then deriving the activities needed to create them. The key steps are:</p><ol><li>Write the Project Product Description.</li><li>Create a Product Breakdown Structure.</li><li>Write Product Descriptions.</li><li>Create a Product Flow Diagram.</li></ol>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "In which step of the planning technique should the project manager identify the equipment needed to deliver the plan?",
+                    "options": [
+                      "Preparing estimates",
+                      "Defining and analysing products",
+                      "Organizing work packages",
+                      "Preparing a schedule"
+                    ],
+                    "answer": 0,
+                    "explanation": "The 'preparing estimates' step involves planning for resources, which 'can be specific materials, equipment, facilities, access, natural resources, or money'."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th07",
+      "title": "Quality",
+      "description": "Documenting user requirements and establishing the means by which they will be met.",
+      "modules": [
+        {
+          "id": "m0701",
+          "title": "Ensuring Quality",
+          "lessons": [
+            {
+              "id": "l070101",
+              "title": "Quality Terminology",
+              "content": "<ul><li><strong>Quality:</strong> The degree to which a product fulfils its requirements.</li><li><strong>User's Quality Expectations:</strong> A statement about the quality expected from the project product.</li><li><strong>Acceptance Criteria:</strong> A prioritized list of criteria the project product must meet before the user will accept it.</li><li><strong>Quality Specifications:</strong> A description of the quality measures that will be applied during quality control.</li></ul>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which of the following describes a requirement?",
+                    "options": [
+                      "A need or expectation that is documented in an approved management product",
+                      "A statement about the quality expected from the project product",
+                      "A prioritized list of criteria that the project product must meet before the user will accept it",
+                      "A description of the quality measures that will be applied"
+                    ],
+                    "answer": 0,
+                    "explanation": "A requirement is defined as 'a need or expectation that is documented in an approved management product'."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l070102",
+              "title": "Quality Management Procedure",
+              "content": "<p>Quality is managed through three main elements:</p><ol><li><strong>Quality Planning:</strong> Identifying the project's major products and documenting the user's quality expectations and acceptance criteria.</li><li><strong>Quality Control:</strong> Implementing the quality management approach through testing and inspection activities to determine if products comply with standards. These activities are recorded in the <strong>Quality Register</strong>.</li><li><strong>Quality Assurance:</strong> An independent check that the project's approach to quality management is appropriate and being followed. This is separate from the project team.</li></ol>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "A system has been tested, and the user needs to take ownership of the system. Where in the quality management technique should this occur?",
+                    "options": [
+                      "Gathering user inputs",
+                      "Accepting products",
+                      "Describing the quality management approach",
+                      "Controlling quality"
+                    ],
+                    "answer": 1,
+                    "explanation": "Acceptance of a project product typically transfers ownership or responsibility for the product from the project or supplier to the project board on behalf of the user."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th08",
+      "title": "Risk",
+      "description": "Identifying, assessing, and controlling uncertainties that could affect the project's objectives.",
+      "modules": [
+        {
+          "id": "m0801",
+          "title": "Managing Uncertainty",
+          "lessons": [
+            {
+              "id": "l080101",
+              "title": "What is Risk?",
+              "content": "<p>A <strong>risk</strong> is an uncertain event or set of events that, should they occur, will affect the achievement of objectives. Risks can be negative (<strong>threats</strong>) or positive (<strong>opportunities</strong>).</p><p>All risks are recorded in the <strong>Risk Register</strong>.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which term is defined as an uncertain event that, should it occur, will have an effect on the achievement of objectives?",
+                    "options": ["Risk", "Off-specification", "Request for change", "Problem/concern"],
+                    "answer": 0,
+                    "explanation": "The definition of a risk is 'an uncertain event or set of events that, should it occur, will affect the achievement of objectives'."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l080102",
+              "title": "Risk Management Procedure",
+              "content": "<p>The recommended risk management procedure consists of five steps:</p><ol><li><strong>Identify:</strong> Identify threats and opportunities.</li><li><strong>Assess:</strong> Prioritize risks based on their probability and impact.</li><li><strong>Plan:</strong> Decide on appropriate risk responses.</li><li><strong>Implement:</strong> Execute the planned risk responses.</li><li><strong>Communicate:</strong> Communicate risk information to stakeholders throughout the process.</li></ol>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "The project manager needs to review the project brief to decide who will be responsible for each step in the risk management technique. In which step should this occur?",
+                    "options": ["Identify", "Communicate", "Assess", "Plan"],
+                    "answer": 0,
+                    "explanation": "The 'Identify - define context and objectives' sub-step involves obtaining information to formulate an appropriate risk management approach, which includes defining the responsibilities to be applied."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th09",
+      "title": "Issues",
+      "description": "Collecting and assessing issues and controlling changes to the project's baseline.",
+      "modules": [
+        {
+          "id": "m0901",
+          "title": "Managing Issues and Changes",
+          "lessons": [
+            {
+              "id": "l090101",
+              "title": "Types of Issue",
+              "content": "<p>An <strong>issue</strong> is an unplanned event that has occurred and requires management action. Issues are logged in the <strong>Issue Register</strong>. Types include:</p><ul><li><strong>Request for Change:</strong> A proposal for a change to a project baseline.</li><li><strong>Off-specification:</strong> A product that does not or will not meet its quality specifications.</li><li><strong>Problem/Concern:</strong> An issue with an immediate negative impact (problem) or one whose impact needs to be assessed (concern).</li></ul>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What is the definition of a request for change?",
+                    "options": [
+                      "A proposal for a change to a baseline",
+                      "Something that should be provided but has not been provided",
+                      "An uncertain event which may affect objectives",
+                      "The current versions of project products that are subject to change control"
+                    ],
+                    "answer": 0,
+                    "explanation": "The definition of a request for change is 'a proposal for a change to a baseline'."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l090102",
+              "title": "Issue Management Procedure",
+              "content": "<p>The recommended procedure for managing issues includes these steps:</p><ol><li><strong>Capture:</strong> Formally log the issue.</li><li><strong>Assess:</strong> Evaluate the issue's impact on the project's objectives and business case.</li><li><strong>Recommend:</strong> Identify and evaluate options for resolving the issue and recommend a course of action.</li><li><strong>Decide:</strong> The appropriate authority (e.g., Project Board) decides whether to approve, reject, or take other action on the recommendation.</li><li><strong>Implement:</strong> Take the corrective action and update records.</li></ol>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "An issue has been raised and its impact on the project scope needs to be understood. In which step of the issue management technique should the impact be understood?",
+                    "options": ["Assessing issues", "Capturing issues", "Deciding on changes", "Implementing changes"],
+                    "answer": 0,
+                    "explanation": "As part of the 'assessing issues' step, the aim is to determine if the issue affects the project and how, which includes understanding its impact on the business case and project objectives."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th10",
+      "title": "Progress",
+      "description": "Monitoring and comparing actual achievements against those planned, providing forecasts, and controlling deviations.",
+      "modules": [
+        {
+          "id": "m1001",
+          "title": "Controlling Progress",
+          "lessons": [
+            {
+              "id": "l100101",
+              "title": "Tolerances and Escalation",
+              "content": "<p>Progress is controlled using the 'Manage by Exception' principle. <strong>Tolerances</strong> are the permissible deviations (for time, cost, scope etc.) allowed at each management level.</p><p>If a level is forecast to exceed its tolerance, it creates an <strong>exception</strong>, which must be escalated to the level above for a decision.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What action may be taken by a project manager when an issue causes one of the stage tolerances to be exceeded?",
+                    "options": [
+                      "Accept or reject the recommendation from the exception report",
+                      "Resolve the issue using other project tolerances and include in the next highlight report",
+                      "Escalate to the business layer for advice and direction",
+                      "Resolve the issue, if possible, using other stage tolerances and include in the next highlight report"
+                    ],
+                    "answer": 3,
+                    "explanation": "If the issue can be resolved by the project manager within the stage tolerances, no exception report is needed. They can take corrective action and note it in reports. Escalating to the business layer is for project-level exceptions."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l100102",
+              "title": "Reporting Progress",
+              "content": "<p>Progress is reported using various management products:</p><ul><li><strong>Checkpoint Report:</strong> From Team Manager to Project Manager on work package status.</li><li><strong>Highlight Report:</strong> From Project Manager to Project Board on stage status.</li><li><strong>End Stage Report:</strong> From Project Manager to Project Board to review the stage and approve the next.</li><li><strong>End Project Report:</strong> From Project Manager to Project Board to review the project's overall performance.</li><li><strong>Exception Report:</strong> To escalate a forecast breach of tolerance.</li></ul>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which report should be reviewed by the project board when making the decision about what to do next with the project?",
+                    "options": [
+                      "Digital and data management approach",
+                      "End Stage Report",
+                      "Highlight Report",
+                      "Checkpoint Report"
+                    ],
+                    "answer": 1,
+                    "explanation": "The End Stage Report is used 'to give a summary of progress to date, the overall project situation, and sufficient information to ask for a project board decision on what to do next with the project.'"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th11",
+      "title": "Starting Up & Initiating a Project",
+      "description": "The pre-project and first stage activities that establish a solid foundation for the project.",
+      "modules": [
+        {
+          "id": "m1101",
+          "title": "Project Startup and Initiation",
+          "lessons": [
+            {
+              "id": "l110101",
+              "title": "Starting up a Project (SU)",
+              "content": "<p>The purpose of the <strong>Starting up a Project</strong> process is to ensure the prerequisites for initiating a project are established. It answers the question, 'Do we have a viable and worthwhile project?' This is a pre-project process, triggered by a <strong>Project Mandate</strong>. Its main outputs are the <strong>Project Brief</strong> and a plan for the initiation stage.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which process should ensure that an organization does not proceed to establish solid foundations for unsuitable projects?",
+                    "options": ["Starting up a Project", "Closing a Project", "Initiating a Project", "Managing a Stage Boundary"],
+                    "answer": 0,
+                    "explanation": "The purpose of the 'Starting up a Project' process is as much about preventing poorly conceived ideas from ever being initiated as it is about approving viable projects. The aim is to do the minimum necessary to decide whether it is worthwhile to even initiate the project."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l110102",
+              "title": "Initiating a Project (IP)",
+              "content": "<p>The purpose of the <strong>Initiating a Project</strong> process is to establish solid foundations for the project, enabling the business to understand the work that needs to be done before committing to significant expenditure. It is the first formal stage of the project. This process culminates in the creation of the <strong>Project Initiation Documentation (PID)</strong>.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which is a description of a purpose of the 'Initiating a Project' process?",
+                    "options": [
+                      "To define how long it will take for the project to deliver what is required to gain acceptance",
+                      "To enable control between the project manager and team managers",
+                      "To review, at a high level, whether the project will add value to an organization",
+                      "To assess whether a project has been delivered on time"
+                    ],
+                    "answer": 0,
+                    "explanation": "The purpose of the 'Initiating a Project' process is to establish solid foundations, enabling the business to understand the work needed to deliver the project product. This includes defining what is required for acceptance."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th12",
+      "title": "Directing a Project",
+      "description": "The activities of the Project Board to exercise overall control and make key decisions.",
+      "modules": [
+        {
+          "id": "m1201",
+          "title": "Project Board Activities",
+          "lessons": [
+            {
+              "id": "l120101",
+              "title": "Purpose of Directing a Project (DP)",
+              "content": "<p>The purpose of the <strong>Directing a Project</strong> process is to enable the Project Board to be accountable for the project's success by making key decisions and exercising overall control, while delegating the day-to-day management to the Project Manager. This process runs from project start-up until closure.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What is a purpose of the 'Directing a Project' process?",
+                    "options": [
+                      "To retain accountability of the project board while delegating the detailed management work",
+                      "To ensure that only worthwhile projects are undertaken by the organization",
+                      "To manage the work of a stage by implementing corrective actions",
+                      "To provide information so that the commissioning authority can commit to delivery of the project"
+                    ],
+                    "answer": 0,
+                    "explanation": "The purpose is to enable the project board to be accountable for the project's success by making key decisions and exercising overall control while delegating day-to-day management to the project manager."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l120102",
+              "title": "Key Decisions of the Project Board",
+              "content": "<p>The Project Board makes several formal authorizations:</p><ul><li><strong>Authorize Initiation:</strong> To allow the initiation stage to begin.</li><li><strong>Authorize the Project:</strong> To approve the PID and allow the project to proceed.</li><li><strong>Authorize a Stage or Exception Plan:</strong> To approve moving to the next stage or to approve a recovery plan.</li><li><strong>Give Ongoing Direction:</strong> To provide informal advice and respond to escalations.</li><li><strong>Authorize Project Closure:</strong> To formally close the project.</li></ul>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which TWO activities support the objectives of the 'Directing a Project' process?",
+                    "options": [
+                      "Authorize that the project team should be disbanded as work is complete",
+                      "Review plans to measure the benefits after the project has closed",
+                      "Check that the products can be supported by operations after the project is closed",
+                      "Verify that the user's requirements have been met"
+                    ],
+                    "answer": 0,
+                    "explanation": "1. 'there is authority to close the project.' 2. 'plans for realizing the post-project benefits are managed and reviewed.' Both are objectives of the Directing a Project process."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th13",
+      "title": "Controlling a Stage",
+      "description": "The day-to-day work of the Project Manager to manage a stage within the agreed tolerances.",
+      "modules": [
+        {
+          "id": "m1301",
+          "title": "Project Manager's Daily Work",
+          "lessons": [
+            {
+              "id": "l130101",
+              "title": "Purpose of Controlling a Stage (CS)",
+              "content": "<p>The purpose of the <strong>Controlling a Stage</strong> process is to assign and monitor work, handle issues, report progress to the Project Board, and take corrective actions to ensure the stage remains within tolerance. This process describes the Project Manager's day-to-day work for a given stage.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Which TWO are objectives of the 'Controlling a Stage' process?",
+                    "options": [
+                      "To respond to risks and issues as they are raised",
+                      "To plan the detailed activities for the next stage of the project",
+                      "To define the controls for the project",
+                      "To continually assess the business justification"
+                    ],
+                    "answer": 3,
+                    "explanation": "1. 'risks and issues are controlled.' 4. 'the business case is kept under review.' Both are objectives of the Controlling a Stage process."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l130102",
+              "title": "Work Packages",
+              "content": "<p>A key activity in this process is authorizing work to be done via <strong>Work Packages</strong>. A Work Package is a description of a set of products to be delivered, passed from the Project Manager to a Team Manager or team member. The Project Manager will then evaluate the status of the work package via Checkpoint Reports and receive the completed work package.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Who is responsible for authorizing a Work Package?",
+                    "options": ["Project Board", "Team Manager", "Project Manager", "Senior User"],
+                    "answer": 2,
+                    "explanation": "The Project Manager authorizes a Work Package to be delivered by a Team Manager."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th14",
+      "title": "Managing Product Delivery",
+      "description": "Controlling the link between the Project Manager and the Team Manager.",
+      "modules": [
+        {
+          "id": "m1401",
+          "title": "Team Management Activities",
+          "lessons": [
+            {
+              "id": "l140101",
+              "title": "Purpose of Managing Product Delivery (MP)",
+              "content": "<p>The purpose of the <strong>Managing Product Delivery</strong> process is to control the link between the Project Manager and the Team Manager. It ensures that work on products allocated to the team is authorized and agreed, and that the products are delivered to the required quality expectations and tolerances.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "The Team Manager has to agree what products need to be produced, and when. In which process should this be agreed?",
+                    "options": [
+                      "Managing Product Delivery",
+                      "Directing a Project",
+                      "Managing a Stage Boundary",
+                      "Controlling a Stage"
+                    ],
+                    "answer": 0,
+                    "explanation": "The purpose of the 'Managing Product Delivery' process is achieved by agreeing the requirements for acceptance, execution, reporting, and delivery of specialist products between the Project Manager and Team Manager."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l140102",
+              "title": "MP Activities",
+              "content": "<p>This process is viewed from the Team Manager's perspective and involves three main activities:</p><ol><li><strong>Accept a Work Package:</strong> Agreeing with the Project Manager on the work to be done.</li><li><strong>Execute a Work Package:</strong> Creating the products, performing quality checks, and reporting progress via Checkpoint Reports.</li><li><strong>Deliver a Work Package:</strong> Notifying the Project Manager that the work is complete and handing over the products.</li></ol>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "Who is responsible for executing a Work Package?",
+                    "options": ["Project Manager", "Project Board", "Team Manager", "Project Support"],
+                    "answer": 2,
+                    "explanation": "The Team Manager (and their team) executes the Work Package to produce the required products within the agreed tolerances."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th15",
+      "title": "Managing a Stage Boundary & Closing a Project",
+      "description": "Managing the transition between stages and formally closing the project.",
+      "modules": [
+        {
+          "id": "m1501",
+          "title": "Stage Transitions and Project Closure",
+          "lessons": [
+            {
+              "id": "l150101",
+              "title": "Managing a Stage Boundary (SB)",
+              "content": "<p>The purpose of the <strong>Managing a Stage Boundary</strong> process is to provide the Project Board with sufficient information to review the success of the current stage, approve the next Stage Plan, review the updated Project Plan, and confirm continued business justification. This process is executed at the end of every stage except the final one.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What is needed to perform the 'Managing a Stage Boundary' process?",
+                    "options": [
+                      "The work of the project needs to be broken down into sections",
+                      "The project benefits must be delivered in each stage",
+                      "The project needs to have a predictable end date",
+                      "Every stage needs to be in exception"
+                    ],
+                    "answer": 0,
+                    "explanation": "The 'Managing a Stage Boundary' process is based on the principle of 'Manage by Stages', which involves dividing the project into manageable sections (stages)."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l150102",
+              "title": "Closing a Project (CP)",
+              "content": "<p>The purpose of the <strong>Closing a Project</strong> process is to provide a fixed point at which acceptance of the project product is confirmed and to recognize that the objectives set out in the PID have been achieved. It ensures that all open issues and risks are addressed and that the business can support the products post-project. This process is used even if the project is closing prematurely.</p>",
+              "quiz": {
+                "type": "mcq",
+                "questions": [
+                  {
+                    "q": "What action should be taken if a project is closed prematurely?",
+                    "options": [
+                      "The project manager should still use the 'Closing a Project' process to deal with the situation",
+                      "The project manager should ensure no additional work is undertaken before the project is closed",
+                      "The project manager should trigger premature close if the business case is no longer valid",
+                      "The project board should approve the use of the remaining project budget to fund operational costs"
+                    ],
+                    "answer": 0,
+                    "explanation": "If a project is being brought to a premature closure, the 'Closing a Project' process will still need to be executed, though it may have to be tailored to the situation."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

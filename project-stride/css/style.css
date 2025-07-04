@@ -1,0 +1,47 @@
+/*
+ * css/style.css
+ * For custom animations and styles not covered by Tailwind utility classes.
+ */
+
+/* Basic styles for lesson content rendered from the JSON data. */
+.prose {
+  line-height: 1.6;
+}
+.prose p, .prose ul, .prose ol {
+  margin-bottom: 1rem;
+}
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+}
+.prose ul {
+  list-style-type: disc;
+}
+.prose ol {
+  list-style-type: decimal;
+}
+.prose strong {
+  font-weight: 700;
+}
+
+/* Custom Animation for XP Gain */
+@keyframes float-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+.xp-gain-animation {
+  /* Position absolute to float over other content */
+  position: absolute;
+  animation: float-up 1.5s ease-out forwards;
+}
+
+/* A subtle transition for all buttons for a smoother feel on hover/focus */
+button {
+  transition: all 0.2s ease-in-out;
+}
