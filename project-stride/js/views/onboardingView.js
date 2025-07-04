@@ -3,18 +3,33 @@
 const appRoot = document.getElementById('app-root');
 let state = {};
 
+/**
+ * Handles the submission of the name form.
+ * @param {Event} e - The form submission event.
+ */
 function handleSubmit(e) {
   e.preventDefault();
   const input = e.target.querySelector('input[name="username"]');
   const userName = input.value.trim();
 
   if (userName) {
+    // Update the user's name in the progress object
     state.appState.userProgress.user.name = userName;
+    
+    // Save the updated progress object to localStorage via the api
     state.appState.api.saveUserProgress(state.appState.userProgress);
-    state.appState.router.init(state.appState.courseData, state.appState.userProgress);
+
+    // --- UPDATED LOGIC ---
+    // Instead of re-initializing, just change the hash to navigate.
+    // The router's 'hashchange' listener will handle the rest.
+    window.location.hash = '#/dashboard';
   }
 }
 
+/**
+ * Renders the onboarding screen.
+ * @param {object} appState - The global application state.
+ */
 export function render(appState) {
   state.appState = appState;
   
@@ -43,8 +58,6 @@ export function render(appState) {
 
   appRoot.innerHTML = onboardingHTML;
   
-  // --- UPDATED ---
-  // Safely render icons only when the library is ready.
   if (window.lucide) {
     lucide.createIcons();
   }
