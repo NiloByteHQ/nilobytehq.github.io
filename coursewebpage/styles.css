@@ -1,0 +1,254 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif; /* Using Inter as per instructions */
+    background: linear-gradient(135deg, #1a1a2e, #0f3460); /* Deep blue gradient */
+    color: #e0e0e0; /* Light text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: row; /* Default for desktop */
+    border: 3px solid #0f3460; /* Darker blue border */
+    box-shadow: 0 0 25px rgba(45, 106, 175, 0.8); /* Stronger blue glow */
+    background-color: #21213a; /* Slightly lighter dark background */
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 1400px; /* Increased max-width */
+    width: 100%; /* Take full width on smaller screens */
+    height: 95vh; /* Adjust as needed */
+    max-height: 800px; /* Max height for larger screens */
+}
+
+#gameCanvas {
+    background-color: #0b0b1a; /* Even darker for game area */
+    display: block;
+    width: 70%; /* Canvas takes 70% of container width */
+    height: 100%;
+    border-right: 1px solid #0f3460;
+}
+
+#ui-panel {
+    width: 30%; /* UI panel takes 30% */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2a2a4a; /* UI panel background */
+    border-left: 1px solid #0f3460;
+    overflow-y: auto; /* Enable scrolling for UI content if it overflows */
+}
+
+#player-stats, #quest-log, #dialogue-box, #quiz-area, #exam-prep-area, #game-messages {
+    background: linear-gradient(145deg, #3b3b5b, #2a2a4a); /* Gradient for UI elements */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #4a4a6d;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+h2, h3 {
+    color: #90ee90; /* Light green for titles */
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #c0c0c0;
+}
+
+button {
+    background: linear-gradient(145deg, #007bff, #0056b3); /* Blue button gradient */
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.05em;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    width: 100%; /* Make buttons full width in action-buttons */
+    margin-bottom: 8px;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #0056b3, #003f80); /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.6);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+#quizOptions label, #examOptions label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #4a4a6d;
+    padding: 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#quizOptions label:hover, #examOptions label:hover {
+    background-color: #5a5a8d;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+#quizOptions input[type="radio"], #examOptions input[type="radio"],
+#quizOptions input[type="checkbox"], #examOptions input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2); /* Slightly larger radio/checkbox */
+}
+
+#quizFeedback {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.correct-feedback {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.incorrect-feedback {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+.game-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-style: italic;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.game-message.info { border-left: 5px solid #007bff; }
+.game-message.success { border-left: 5px solid #28a745; }
+.game-message.error { border-left: 5px solid #dc3545; }
+
+/* Modal Overlays */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: linear-gradient(160deg, #2a2a4a, #1a1a2e);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(45, 106, 175, 0.9);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    border: 2px solid #0f3460;
+}
+
+.modal-content h2 {
+    color: #90ee90;
+    margin-bottom: 20px;
+}
+
+.modal-content ul {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    text-align: left;
+    border: 1px solid #4a4a6d;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+.modal-content ul li {
+    background-color: #3b3b5b;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #c0c0c0;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #90ee90;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    width: auto; /* Override 100% width */
+    box-shadow: none; /* Override button shadow */
+    margin-bottom: 0; /* Override button margin */
+}
+
+.close-modal-btn:hover {
+    background-color: rgba(144, 238, 144, 0.2);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #game-container {
+        flex-direction: column; /* Stack elements on mobile */
+        height: 98vh; /* Use more vertical space */
+        max-height: none; /* Remove max height constraint */
+    }
+
+    #gameCanvas {
+        width: 100%;
+        height: 40vh; /* Give canvas some height */
+        border-right: none;
+        border-bottom: 1px solid #0f3460;
+    }
+
+    #ui-panel {
+        width: 100%;
+        height: 60vh; /* UI panel takes remaining height */
+        border-left: none;
+        overflow-y: auto;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+}
