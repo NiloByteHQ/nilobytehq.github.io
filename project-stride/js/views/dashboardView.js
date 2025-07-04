@@ -4,10 +4,12 @@ const appRoot = document.getElementById('app-root');
 
 function findNextLesson(courseData, userProgress) {
   for (const theme of courseData.themes) {
-    for (const module of theme.modules) {
-      for (const lesson of module.lessons) {
-        if (!userProgress.progress[lesson.id]) {
-          return { ...lesson, themeTitle: theme.title };
+    if (theme.modules) { // Safety check
+      for (const module of theme.modules) {
+        for (const lesson of module.lessons) {
+          if (!userProgress.progress[lesson.id]) {
+            return { ...lesson, themeTitle: theme.title };
+          }
         }
       }
     }
@@ -17,11 +19,14 @@ function findNextLesson(courseData, userProgress) {
 
 function calculateProgress(courseData, userProgress) {
   let totalLessons = 0;
-  courseData.themes.forEach(theme => 
-    theme.modules.forEach(module => 
-      totalLessons += module.lessons.length
-    )
-  );
+  courseData.themes.forEach(theme => {
+    // --- FIXED: Add a safety check for theme.modules ---
+    if (theme.modules) {
+      theme.modules.forEach(module => {
+        totalLessons += module.lessons.length;
+      });
+    }
+  });
   const completedLessons = Object.keys(userProgress.progress).length;
   if (totalLessons === 0) return 0;
   return Math.round((completedLessons / totalLessons) * 100);
@@ -87,7 +92,6 @@ export function render(appState) {
   
   appRoot.innerHTML = dashboardHTML;
   
-  // --- UPDATED ---
   if (window.lucide) {
     lucide.createIcons();
   }
