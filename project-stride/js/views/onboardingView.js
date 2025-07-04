@@ -1,33 +1,20 @@
 // js/views/onboardingView.js
 
 const appRoot = document.getElementById('app-root');
-let state = {}; // Local state for this view
+let state = {};
 
-/**
- * Handles the submission of the name form.
- * @param {Event} e - The form submission event.
- */
 function handleSubmit(e) {
   e.preventDefault();
   const input = e.target.querySelector('input[name="username"]');
   const userName = input.value.trim();
 
   if (userName) {
-    // Update the user's name in the progress object
     state.appState.userProgress.user.name = userName;
-    
-    // Save the updated progress object to localStorage
     state.appState.api.saveUserProgress(state.appState.userProgress);
-
-    // Manually trigger a full re-initialization of the router for existing users
     state.appState.router.init(state.appState.courseData, state.appState.userProgress);
   }
 }
 
-/**
- * Renders the onboarding screen.
- * @param {object} appState - The global application state.
- */
 export function render(appState) {
   state.appState = appState;
   
@@ -55,8 +42,12 @@ export function render(appState) {
   `;
 
   appRoot.innerHTML = onboardingHTML;
-  lucide.createIcons();
   
-  // Attach the event listener to the form
+  // --- UPDATED ---
+  // Safely render icons only when the library is ready.
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+  
   document.getElementById('onboarding-form').addEventListener('submit', handleSubmit);
 }
