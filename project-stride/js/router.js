@@ -1,13 +1,12 @@
 // js/router.js
 
-import * as dashboardView from './views/dashboardView.js';
-import * as lessonView from './views/lessonView.js';
-import * as onboardingView from './views/onboardingView.js'; // Import the new view
+import * as dashboardView from './dashboardView.js';
+import * as lessonView from './lessonView.js';
+import * as onboardingView from './onboardingView.js';
 import * as api from './api.js';
 
 let appState = {
   api: api,
-  // Add a reference to the router itself to help with navigation
   router: {
     init: init 
   }
@@ -21,15 +20,20 @@ const routes = {
 };
 
 function router() {
-  // If the user's name is not set, force the onboarding view regardless of hash
   if (!appState.userProgress.user.name) {
     onboardingView.render(appState);
     return;
   }
 
+  // --- UPDATED LOGIC ---
   const hash = window.location.hash;
-  const [route, param] = hash.split('/');
-  const renderFunc = routes[route] || routes[''];
+
+  // Better parsing for routes with parameters like '#/lesson/l010101'
+  const pathParts = hash.split('/');
+  const route = pathParts.length > 2 ? `${pathParts[0]}/${pathParts[1]}` : hash; // Reconstructs to '#/lesson'
+  const param = pathParts.length > 2 ? pathParts[2] : null; // Gets 'l010101'
+
+  const renderFunc = routes[route] || routes['']; // Look for '#/lesson' in our routes object
 
   if (renderFunc) {
     renderFunc(appState, param);
@@ -45,7 +49,6 @@ export function init(courseData, userProgress) {
   appState.courseData = courseData;
   appState.userProgress = userProgress;
 
-  // Add event listener and trigger the initial route check
   window.addEventListener('hashchange', router);
   router(); 
 }
