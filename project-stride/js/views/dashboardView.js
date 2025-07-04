@@ -2,32 +2,19 @@
 
 const appRoot = document.getElementById('app-root');
 
-/**
- * Finds the very first lesson that has not been completed.
- * @param {object} courseData - The full course data.
- * @param {object} userProgress - The user's progress object.
- * @returns {object|null} The next lesson object (with themeTitle) or null if all are complete.
- */
 function findNextLesson(courseData, userProgress) {
   for (const theme of courseData.themes) {
     for (const module of theme.modules) {
       for (const lesson of module.lessons) {
         if (!userProgress.progress[lesson.id]) {
-          // Return the lesson and its parent theme info
           return { ...lesson, themeTitle: theme.title };
         }
       }
     }
   }
-  return null; // All lessons are complete
+  return null;
 }
 
-/**
- * Calculates the user's overall progress percentage.
- * @param {object} courseData - The full course data.
- * @param {object} userProgress - The user's progress object.
- * @returns {number} The progress percentage (0-100).
- */
 function calculateProgress(courseData, userProgress) {
   let totalLessons = 0;
   courseData.themes.forEach(theme => 
@@ -35,18 +22,11 @@ function calculateProgress(courseData, userProgress) {
       totalLessons += module.lessons.length
     )
   );
-
   const completedLessons = Object.keys(userProgress.progress).length;
-  
   if (totalLessons === 0) return 0;
   return Math.round((completedLessons / totalLessons) * 100);
 }
 
-/**
- * Renders the main dashboard view into the app's root element.
- * @param {object} courseData - The full course data.
- * @param {object} userProgress - The user's progress object.
- */
 export function render(appState) {
   const { courseData, userProgress } = appState;
   const userName = userProgress.user.name || "Project Manager";
@@ -91,7 +71,6 @@ export function render(appState) {
                 <p class="text-sm text-gray-400">Experience Points</p>
             </div>
         </header>
-
         <section id="project-timeline" class="mb-12">
             <h2 class="text-xl font-bold mb-4 text-slate-700">Project Timeline</h2>
             <div class="w-full bg-gray-200 rounded-full h-4 shadow-inner">
@@ -99,7 +78,6 @@ export function render(appState) {
             </div>
             <p class="text-right text-sm text-gray-500 mt-2">${progressPercentage}% Complete</p>
         </section>
-
         <section id="current-work-package">
             <h2 class="text-xl font-bold mb-2 text-slate-700">Current Work Package</h2>
             ${currentWorkPackageHTML}
@@ -108,13 +86,14 @@ export function render(appState) {
   `;
   
   appRoot.innerHTML = dashboardHTML;
-  // Re-run lucide to render any new icons after updating the DOM
-  lucide.createIcons();
+  
+  // --- UPDATED ---
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 
-  // Add event listener for the 'Start Task' button if it exists
   if (nextLesson) {
     document.getElementById('start-task-btn').addEventListener('click', () => {
-      // Change the hash to navigate to the lesson view via the router
       window.location.hash = `#/lesson/${nextLesson.id}`;
     });
   }
